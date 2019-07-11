@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="be3d1a98-9a6d-47c5-8dce-2ee641eabbd9" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="71">
+              <caret line="41" column="64" lean-forward="true" selection-start-line="41" selection-start-column="64" selection-end-line="41" selection-end-column="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2498#2499#0" expanded="true" />
+                <element signature="e#2536#2537#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/YmlHandlers/TeamsYmlHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-79">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#createTeam#0;class#TeamsYmlHandler#0" />
+                <element signature="method#joinTeam#0;class#TeamsYmlHandler#0" />
+                <element signature="method#exitTeam#0;class#TeamsYmlHandler#0" />
+                <element signature="method#getTeam#0;class#TeamsYmlHandler#0" />
+                <element signature="method#deleteTeam#0;class#TeamsYmlHandler#0" />
+                <element signature="method#checkTeam#0;class#TeamsYmlHandler#0" />
+                <element signature="method#getTeams#0;class#TeamsYmlHandler#0" />
+                <element signature="method#setTeamColor#0;class#TeamsYmlHandler#0" />
+                <element signature="method#renameTeam#0;class#TeamsYmlHandler#0" />
+                <element signature="e#3704#3705#0" expanded="true" />
+                <element signature="e#3764#3765#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamCreate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-91">
+              <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/GUIBuilder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="376">
+              <caret line="143" column="9" selection-start-line="143" selection-start-column="9" selection-end-line="143" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/EventHandlers/InventoryClickHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#620#621#0" expanded="true" />
+                <element signature="e#656#657#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamCreate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Chat/Chat.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/MenuHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Chat/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Chat/Test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Chat/ChatPrefix.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/PvpHandler/PvpHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/Config.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeleportBowCommands.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/TeleportBowEvent.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
+        <option value="$PROJECT_DIR$/src/main/resources/config.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/YmlHandlers/YmlHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/YmlHandlers/PlayerYmlHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamChatCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TabCompletion.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamRemove.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Sign/ConversationAbondon.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Sign/TeamColorPrompt.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Sign/TeamNamePrompt.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/EventHandlers/Chat.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/EventHandlers/ChatPrefix.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/EventHandlers/PvpHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamSubCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamKick.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamChangeFX.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamChangeColor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Sign/Signs.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamRename.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamJoin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamCreate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamLeave.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeleportCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/YmlHandlers/TeamsYmlHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/EventHandlers/InventoryClickHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/GUIBuilder.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="MinecraftSurvivalTeamsPlugin" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="MinecraftSurvivalTeamsPlugin" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="415" />
+    <option name="y" value="-25" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="MinecraftSurvivalTeamsPlugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MinecraftTeamsPlugin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MinecraftSurvivalTeamsPlugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MinecraftTeamsPlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MinecraftSurvivalTeamsPlugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MinecraftTeamsPlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MinecraftSurvivalTeamsPlugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MinecraftTeamsPlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MinecraftSurvivalTeamsPlugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MinecraftTeamsPlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="minecraftsurvivalteamsplugin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MinecraftSurvivalTeamsPlugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MinecraftTeamsPlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="minecraftsurvivalteamsplugin" type="462c0819:PsiDirectoryNode" />
+              <item name="Commands" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MinecraftSurvivalTeamsPlugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MinecraftTeamsPlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="minecraftsurvivalteamsplugin" type="462c0819:PsiDirectoryNode" />
+              <item name="EventHandlers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MinecraftSurvivalTeamsPlugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MinecraftTeamsPlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="minecraftsurvivalteamsplugin" type="462c0819:PsiDirectoryNode" />
+              <item name="YmlHandlers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MinecraftSurvivalTeamsPlugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MinecraftTeamsPlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562870763404" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Minecraft Plugins/Test" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="me.damascus2000.minecraftsurvivalteamsplugin.YmlHandlers" />
+      <recent name="me.damascus2000.minecraftsurvivalteamsplugin.EventHandlers" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="be3d1a98-9a6d-47c5-8dce-2ee641eabbd9" name="Default Changelist" comment="" />
+      <created>1550329345755</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1550329345755</updated>
+      <workItem from="1550329358426" duration="3654000" />
+      <workItem from="1550424245339" duration="654000" />
+      <workItem from="1550431425531" duration="787000" />
+      <workItem from="1551796129348" duration="418000" />
+      <workItem from="1551796965973" duration="957000" />
+      <workItem from="1551797984278" duration="1789000" />
+      <workItem from="1551866214349" duration="1415000" />
+      <workItem from="1551867724243" duration="48000" />
+      <workItem from="1551879999664" duration="4014000" />
+      <workItem from="1551884983515" duration="35000" />
+      <workItem from="1551900754235" duration="31000" />
+      <workItem from="1551901131406" duration="213000" />
+      <workItem from="1551901475665" duration="15000" />
+      <workItem from="1551902063912" duration="400000" />
+      <workItem from="1551966688438" duration="183000" />
+      <workItem from="1551966893809" duration="3084000" />
+      <workItem from="1551970680381" duration="3398000" />
+      <workItem from="1551975931156" duration="1170000" />
+      <workItem from="1551983955375" duration="4244000" />
+      <workItem from="1552054480155" duration="1351000" />
+      <workItem from="1552056260876" duration="1356000" />
+      <workItem from="1552129687310" duration="8193000" />
+      <workItem from="1552224170632" duration="599000" />
+      <workItem from="1552342288936" duration="199000" />
+      <workItem from="1552342502128" duration="227000" />
+      <workItem from="1552343397203" duration="1618000" />
+      <workItem from="1552459446987" duration="2379000" />
+      <workItem from="1552486809525" duration="1629000" />
+      <workItem from="1552493572086" duration="1516000" />
+      <workItem from="1552498498046" duration="1182000" />
+      <workItem from="1552559252863" duration="52000" />
+      <workItem from="1552574115841" duration="656000" />
+      <workItem from="1553110119839" duration="1011000" />
+      <workItem from="1554367836006" duration="98000" />
+      <workItem from="1554411844567" duration="396000" />
+      <workItem from="1554412262757" duration="36000" />
+      <workItem from="1554649914695" duration="651000" />
+      <workItem from="1554797968404" duration="840000" />
+      <workItem from="1555008050008" duration="599000" />
+      <workItem from="1555059350862" duration="286000" />
+      <workItem from="1555059745089" duration="506000" />
+      <workItem from="1555079651760" duration="13000" />
+      <workItem from="1555590696748" duration="5732000" />
+      <workItem from="1555604059831" duration="2339000" />
+      <workItem from="1555616956416" duration="1021000" />
+      <workItem from="1555618847446" duration="609000" />
+      <workItem from="1555683656105" duration="2767000" />
+      <workItem from="1555843774781" duration="25000" />
+      <workItem from="1555847993415" duration="2664000" />
+      <workItem from="1555936517574" duration="599000" />
+      <workItem from="1556140039113" duration="1452000" />
+      <workItem from="1556198455113" duration="408000" />
+      <workItem from="1556218151257" duration="86000" />
+      <workItem from="1556389048440" duration="605000" />
+      <workItem from="1556483101191" duration="129000" />
+      <workItem from="1556483723516" duration="1363000" />
+      <workItem from="1557821964647" duration="1301000" />
+      <workItem from="1557851730516" duration="4000" />
+      <workItem from="1557853023493" duration="521000" />
+      <workItem from="1557861504611" duration="1007000" />
+      <workItem from="1558180414001" duration="576000" />
+      <workItem from="1558181689114" duration="12000" />
+      <workItem from="1558184509726" duration="49000" />
+      <workItem from="1559227162516" duration="173000" />
+      <workItem from="1559232080216" duration="15000" />
+      <workItem from="1559300511453" duration="99000" />
+      <workItem from="1559323944981" duration="966000" />
+      <workItem from="1559324959619" duration="259000" />
+      <workItem from="1559407465554" duration="2021000" />
+      <workItem from="1559409499145" duration="2888000" />
+      <workItem from="1559488339984" duration="3037000" />
+      <workItem from="1559893299085" duration="1855000" />
+      <workItem from="1559903718108" duration="23000" />
+      <workItem from="1559981178437" duration="495000" />
+      <workItem from="1560008480595" duration="770000" />
+      <workItem from="1560161297496" duration="13000" />
+      <workItem from="1560186484792" duration="17000" />
+      <workItem from="1560255491790" duration="1268000" />
+      <workItem from="1560257727102" duration="16000" />
+      <workItem from="1560274081968" duration="939000" />
+      <workItem from="1560278513427" duration="1290000" />
+      <workItem from="1560287896705" duration="605000" />
+      <workItem from="1560291289090" duration="661000" />
+      <workItem from="1560367515626" duration="34000" />
+      <workItem from="1560452123388" duration="1196000" />
+      <workItem from="1560453510199" duration="85000" />
+      <workItem from="1560455576530" duration="508000" />
+      <workItem from="1560456273497" duration="213000" />
+      <workItem from="1560456629954" duration="40000" />
+      <workItem from="1560456811782" duration="300000" />
+      <workItem from="1560457228469" duration="300000" />
+      <workItem from="1560530776551" duration="267000" />
+      <workItem from="1560590595135" duration="199000" />
+      <workItem from="1560594123989" duration="682000" />
+      <workItem from="1561191821296" duration="742000" />
+      <workItem from="1561193757475" duration="59000" />
+      <workItem from="1561193964375" duration="2210000" />
+      <workItem from="1561326090948" duration="865000" />
+      <workItem from="1561369496504" duration="3000" />
+      <workItem from="1561392616541" duration="258000" />
+      <workItem from="1561918277063" duration="649000" />
+      <workItem from="1562759500136" duration="1340000" />
+      <workItem from="1562783980213" duration="7048000" />
+      <workItem from="1562832167078" duration="20410000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="129989000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24630873" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.67285717" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.17428571" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286119" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3286119" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Statistic" order="12" weight="0.071428575" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.3286119" />
+      <window_info anchor="bottom" id="Floobits" order="14" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info active="true" anchor="right" id="Maven" order="5" visible="true" weight="0.10671141" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" weight="0.2543624" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/spigotmc/spigot-api/1.13.2-R0.1-SNAPSHOT/spigot-api-1.13.2-R0.1-20190216.070527-155.jar!/org/bukkit/command/CommandSender.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamCreate.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/MenuHandler.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Chat/Main.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Chat/Test.java" />
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamChatCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="22" column="62" selection-start-line="22" selection-start-column="62" selection-end-line="22" selection-end-column="62" />
+          <folding>
+            <element signature="e#512#513#0" expanded="true" />
+            <element signature="e#531#532#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeleportBowCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-343">
+          <caret line="15" column="50" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#612#613#0" expanded="true" />
+            <element signature="e#648#649#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/TeleportBowEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="31" column="95" selection-start-line="31" selection-start-column="95" selection-end-line="31" selection-end-column="95" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#590#591#0" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/YmlHandlers/PlayerYmlHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Sign/TeamNamePrompt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Sign/TeamColorPrompt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="41" column="64" selection-start-line="41" selection-start-column="64" selection-end-line="41" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Sign/ConversationAbondon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TabCompletion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamRemove.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="10" column="66" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamChangeFX.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="718">
+          <caret line="37" column="21" lean-forward="true" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/EventHandlers/PvpHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#553#554#0" expanded="true" />
+            <element signature="e#588#589#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamKick.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="31" column="81" lean-forward="true" selection-start-line="31" selection-start-column="81" selection-end-line="31" selection-end-column="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/EventHandlers/Chat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="26" column="47" lean-forward="true" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/EventHandlers/ChatPrefix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="713">
+          <caret line="40" column="22" lean-forward="true" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamRename.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-134">
+          <caret line="33" column="57" lean-forward="true" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamJoin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamLeave.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeleportCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="28" column="86" lean-forward="true" selection-start-line="28" selection-start-column="86" selection-end-line="28" selection-end-column="86" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Sign/Signs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2171">
+          <caret line="139" column="21" lean-forward="true" selection-start-line="139" selection-start-column="21" selection-end-line="139" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamChangeColor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="28" column="52" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/YmlHandlers/YmlHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#452#453#0" expanded="true" />
+            <element signature="e#488#489#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamSubCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamSubCommand/TeamCreate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-91">
+          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="41" column="64" lean-forward="true" selection-start-line="41" selection-start-column="64" selection-end-line="41" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2498#2499#0" expanded="true" />
+            <element signature="e#2536#2537#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/YmlHandlers/TeamsYmlHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-79">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#createTeam#0;class#TeamsYmlHandler#0" />
+            <element signature="method#joinTeam#0;class#TeamsYmlHandler#0" />
+            <element signature="method#exitTeam#0;class#TeamsYmlHandler#0" />
+            <element signature="method#getTeam#0;class#TeamsYmlHandler#0" />
+            <element signature="method#deleteTeam#0;class#TeamsYmlHandler#0" />
+            <element signature="method#checkTeam#0;class#TeamsYmlHandler#0" />
+            <element signature="method#getTeams#0;class#TeamsYmlHandler#0" />
+            <element signature="method#setTeamColor#0;class#TeamsYmlHandler#0" />
+            <element signature="method#renameTeam#0;class#TeamsYmlHandler#0" />
+            <element signature="e#3704#3705#0" expanded="true" />
+            <element signature="e#3764#3765#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/Commands/TeamCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/EventHandlers/InventoryClickHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#620#621#0" expanded="true" />
+            <element signature="e#656#657#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/damascus2000/minecraftsurvivalteamsplugin/GUIBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="143" column="9" selection-start-line="143" selection-start-column="9" selection-end-line="143" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Minecraft</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>JavaFX</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8.0_191</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Minecraft|MinecraftSurvivalTeamsPlugin</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: com.google.code.gson:gson:2.8.0</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
