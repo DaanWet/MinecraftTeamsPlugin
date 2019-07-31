@@ -10,44 +10,79 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
+
+import java.util.List;
 
 public class InventoryClickHandler implements Listener {
 
     private Main plugin;
+    TeamsYmlHandler tHandler;
 
 
-    public InventoryClickHandler(Main plugin){
+    public InventoryClickHandler(Main plugin) {
         this.plugin = plugin;
+        tHandler = plugin.getTeamsHandler();
     }
 
     @EventHandler
-    public void onInventoryClick(InventoryClickEvent e){
+    public void onInventoryClick(InventoryClickEvent e) {
         InventoryView inv = e.getView();
         Player player = (Player) e.getWhoClicked();
-        Material clicked = e.getCurrentItem().getType();
+        Material clicked;
+        try {
+            clicked = e.getCurrentItem().getType();
+        } catch (Exception exc){
+            clicked = null;
+        }
         GUIBuilder builder = new GUIBuilder(player, plugin);
-        if (inv.getTitle().equals(ChatColor.AQUA + "Travel Menu")){
-            if (clicked.equals(Material.ACTIVATOR_RAIL)){
-                builder.createTravel();
-            } else if (clicked.equals(Material.CRAFTING_TABLE)){
-                builder.createWarpPointMenu();
-            } else if (clicked.equals(Material.BARRIER)){
-                e.getView().close();
+        boolean top = e.getClickedInventory().equals(inv.getTopInventory());
+        if (clicked != null) {
+            if (top && inv.getTitle().equals(ChatColor.AQUA + "Main Menu")) {
+                if (clicked.equals(Material.ACTIVATOR_RAIL)) {
+                    builder.createTravel();
+                } else if (clicked.equals(Material.CRAFTING_TABLE)) {
+                    builder.createWarpPointMenu();
+                } else if (clicked.equals(Material.BARRIER)) {
+                    e.getView().close();
+                }
+                e.setCancelled(true);
+            } else if (top && inv.getTitle().equals(ChatColor.AQUA + "Warp Creation Menu")) {
+                if (clicked.equals(Material.CRAFTING_TABLE)) {
+                    Location loc = player.getLocation();
+                    loc.setX(loc.getBlockX());
+                    loc.setY(loc.getBlockY());
+                    loc.setZ(loc.getBlockZ());
+                    tHandler.setWarp(tHandler.getTeam(player.getName()), loc);
+                    builder.createWarpPointMenu();
+                } else if (clicked.equals(Material.BARRIER)) {
+                    builder.createMainMenu();
+                }
+                e.setCancelled(true);
+            } else if (top && inv.getTitle().equals(ChatColor.AQUA + "Travel Menu")) {
+                if (clicked.equals(Material.BARRIER)) {
+                    builder.createMainMenu();
+                } else {
+                    String team = e.getCurrentItem().getItemMeta().getDisplayName().substring(2);
+                    Location loc = tHandler.getWarp(team);
+                    builder.createFuelMenu(loc, team);
+                }
+                e.setCancelled(true);
+            } else if (inv.getTitle().equals("Fuel Deposit")) {
+                if (top && clicked.equals(Material.BARRIER)) {
+                    builder.createTravel();
+                    e.setCancelled(true);
+                } else if (top && clicked.equals(Material.GREEN_CONCRETE)) {
+                    List<String> lore = e.getCurrentItem().getItemMeta().getLore();
+                    int cost = Integer.parseInt(lore.get(0).split(" ")[0].substring(2));
+                    if (e.getClickedInventory().contains(Material.COAL) && e.getClickedInventory().first(Material.COAL) == 13 && e.getClickedInventory().getItem(13).getAmount() == cost) {
+                        player.teleport(tHandler.getWarp(lore.get(1)));
+                    }
+                    e.setCancelled(true);
+                } else if (!clicked.equals(Material.COAL) && !clicked.equals(Material.AIR)) {
+                    e.setCancelled(true);
+                }
             }
-            e.setCancelled(true);
-        } else if (inv.getTitle().equals(ChatColor.AQUA + "Warp Creation Menu")){
-            if (clicked.equals(Material.CRAFTING_TABLE)){
-                Location loc = player.getLocation();
-                TeamsYmlHandler tHandler = plugin.getTeamsHandler();
-                loc.setX(loc.getBlockX());
-                loc.setY(loc.getBlockY());
-                loc.setZ(loc.getBlockZ());
-                tHandler.setWarp(tHandler.getTeam(player.getName()), loc);
-                builder.createWarpPointMenu();
-            }
-            e.setCancelled(true);
         }
     }
 }

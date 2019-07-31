@@ -22,7 +22,7 @@ public class TeamLeave extends TeamSubCommand {
                 String team = tHandler.getTeam(player.getName());
                 if (team != null){
                     tHandler.exitTeam(player.getName());
-                    super.sendSucces(player, succes + ChatColor.valueOf(team) + team);
+                    super.sendSucces(player, succes + ChatColor.valueOf(tHandler.getTeamColor(team)) + team);
                     new ChatPrefix(plugin).nameChange(player);
                 } else{
                     super.sendError(sender, notInTeamError);

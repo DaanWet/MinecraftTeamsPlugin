@@ -21,6 +21,7 @@ public class GUIBuilder {
     private TeamsYmlHandler tHandler;
     private Player player;
     ItemStack back = new ItemStack(Material.BARRIER);
+    private Location loc;
 
 
     public GUIBuilder(Player player, Main plugin){
@@ -31,9 +32,24 @@ public class GUIBuilder {
         back.setItemMeta(backMeta);
     }
 
+    public Location getLoc(){
+        return loc;
+    }
 
-    public void createTravelMenu() {
-        Inventory inv = Bukkit.createInventory(player, 9, ChatColor.AQUA + "Travel Menu");
+    public Inventory createBasicInv(Player player, int grootte, String name){
+        Inventory inv = Bukkit.createInventory(player, grootte, name);
+        for (int i = 0; i < grootte; i++){
+            ItemStack black = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
+            ItemMeta blackMeta = black.getItemMeta();
+            blackMeta.setDisplayName(ChatColor.GRAY + "");
+            black.setItemMeta(blackMeta);
+            inv.setItem(i, black);
+        }
+        return inv;
+    }
+
+    public void createMainMenu() {
+        Inventory inv = createBasicInv(player, 9, ChatColor.AQUA + "Main Menu");
         ItemStack createw;
         ItemMeta createMeta;
         ArrayList<String> createLore;
@@ -59,12 +75,10 @@ public class GUIBuilder {
         travelMeta.setLore(travelLore);
         travel.setItemMeta(travelMeta);
 
-
         ItemStack cancel = new ItemStack(Material.BARRIER);
         ItemMeta cancelMeta = cancel.getItemMeta();
         cancelMeta.setDisplayName(ChatColor.RED + "Cancel");
         cancel.setItemMeta(cancelMeta);
-
 
         inv.setItem(2, createw);
         inv.setItem(5, travel);
@@ -74,7 +88,7 @@ public class GUIBuilder {
     }
 
     public void createWarpPointMenu(){
-        Inventory inv = Bukkit.createInventory(player, 9, ChatColor.AQUA + "Warp Creation Menu");
+        Inventory inv = createBasicInv(player, 9, ChatColor.AQUA + "Warp Creation Menu");
         ItemStack current = new ItemStack(Material.BLUE_BED);
         ItemMeta currentMeta = current.getItemMeta();
         currentMeta.setDisplayName(ChatColor.BLUE + "Current Warp");
@@ -93,9 +107,9 @@ public class GUIBuilder {
         newMeta.setDisplayName(ChatColor.GREEN + "Create new warp");
         ArrayList<String> newLore;
         if (loc != null){
-            newLore = new ArrayList<>(Collections.singletonList(ChatColor.BLUE + "Replace the current warp with a warp at your location"));
+            newLore = new ArrayList<>(Arrays.asList(ChatColor.BLUE + "Replace the current warp", ChatColor.BLUE + "with a warp at your location"));
         } else {
-            newLore = new ArrayList<>(Collections.singletonList(ChatColor.BLUE + "Set the warp to a warp at your current location"));
+            newLore = new ArrayList<>(Arrays.asList(ChatColor.BLUE + "Set the warp to a warp", ChatColor.BLUE + "at your current location"));
         }
         newMeta.setLore(newLore);
         newWarp.setItemMeta(newMeta);
@@ -114,33 +128,70 @@ public class GUIBuilder {
                 teamsWithWarp.add(team);
             }
         }
-        int grootte = (teamsWithWarp.size() * 2) + 1;
-        Inventory inv = Bukkit.createInventory(player, grootte , ChatColor.AQUA + "Travel Menu");
-        int g = 11;
-        int i = 0;
-        while (i < teamsWithWarp.size()){
-            String team = teamsWithWarp.get(i);
-            String color = tHandler.getTeamColor(team).toUpperCase();
-            ItemStack block = new ItemStack(Material.valueOf(String.format("%s_CONCRETE", color)));
-            ItemMeta blockMeta = block.getItemMeta();
-            blockMeta.setDisplayName(ChatColor.valueOf(color) + team);
-            Location loc = tHandler.getWarp(team);
-            ArrayList<String> blockLore = new ArrayList<>(Collections.singletonList(ChatColor.BLUE +  String.format("X: %s, Y: %s, Z: %s", loc.getBlockX(), loc.getBlockY(), loc.getBlockZ())));
-            blockMeta.setLore(blockLore);
-            inv.setItem(g, block);
-            g += 4;
-            i += 1;
-            team = teamsWithWarp.get(i);
-            color = tHandler.getTeamColor(team).toUpperCase();
-            block = new ItemStack(Material.valueOf(String.format("%s_CONCRETE", color)));
-            blockMeta = block.getItemMeta();
-            blockMeta.setDisplayName(ChatColor.valueOf(color) + team);
-            loc = tHandler.getWarp(team);
-            blockLore = new ArrayList<>(Collections.singletonList(ChatColor.BLUE +  String.format("X: %s, Y: %s, Z: %s", loc.getBlockX(), loc.getBlockY(), loc.getBlockZ())));
-            blockMeta.setLore(blockLore);
-            inv.setItem(g, block);
-            g += 5;
-            i += 1;
+
+        int grootte = ((teamsWithWarp.size() + 1)/ 2 * 9) * 2 + 9;
+        System.out.println(grootte);
+        Inventory inv = createBasicInv(player, grootte , ChatColor.AQUA + "Travel Menu");
+        int place = 11;
+        int team = 0;
+        while (team < teamsWithWarp.size()){
+            int j = 0;
+            while (team + j < teamsWithWarp.size() &&  j < 2) {
+                String teamname = teamsWithWarp.get(team + j);
+                String color = tHandler.getTeamColor(teamname).toUpperCase();
+                ItemStack block;
+                try {
+                    block = new ItemStack(Material.valueOf(String.format("%s_CONCRETE", color)));
+                } catch (Exception e) {
+                    block = new ItemStack(Material.WHITE_CONCRETE);
+                }
+                ItemMeta blockMeta = block.getItemMeta();
+                blockMeta.setDisplayName(ChatColor.valueOf(color) + teamname);
+                Location loc = tHandler.getWarp(teamname);
+                ArrayList<String> blockLore = new ArrayList<>(Collections.singletonList(ChatColor.BLUE + String.format("Warp to X: %s, Y: %s, Z: %s", loc.getBlockX(), loc.getBlockY(), loc.getBlockZ())));
+                blockMeta.setLore(blockLore);
+                block.setItemMeta(blockMeta);
+                inv.setItem(place, block);
+                place += 4;
+                j++;
+            }
+            team += 2;
+            place ++;
+
         }
+        inv.setItem(grootte - 5, back);
+        player.openInventory(inv);
+    }
+
+    public void createFuelMenu(Location loc, String team){
+        this.loc = loc;
+        Inventory inv = Bukkit.createInventory(player, 27, ChatColor.BLACK + "Fuel Deposit");
+        Location currentLoc = player.getLocation();
+        Location vector = currentLoc.subtract(loc);
+        double x = vector.getX();
+        double y = vector.getY();
+        double z = vector.getZ();
+        double flatdistance = Math.sqrt(x*x + y*y);
+        double distance = Math.sqrt(flatdistance*flatdistance + z*z);
+        int cost = (int)(0.256 * distance);
+        for(int i = 0; i< 27; i++){
+            if (i != 13) {
+                ItemStack black = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
+                ItemMeta blackMeta = black.getItemMeta();
+                blackMeta.setDisplayName(ChatColor.GRAY + String.format("Deposit %s coal", cost));
+                black.setItemMeta(blackMeta);
+                inv.setItem(i, black);
+            }
+        }
+        ItemStack confirm = new ItemStack(Material.GREEN_CONCRETE);
+        ItemMeta confirmMeta = confirm.getItemMeta();
+        confirmMeta.setDisplayName(ChatColor.GREEN + "Confirm");
+        confirmMeta.setLore(new ArrayList<>(Arrays.asList(ChatColor.GRAY + String.format("%s coal", cost), team)));
+        confirm.setItemMeta(confirmMeta);
+        inv.setItem(25, confirm);
+        inv.setItem(26, back);
+        inv.setMaxStackSize(cost);
+        player.openInventory(inv);
+
     }
 }
