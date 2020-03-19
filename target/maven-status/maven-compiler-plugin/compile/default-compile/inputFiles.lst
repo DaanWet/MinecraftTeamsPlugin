@@ -6,6 +6,7 @@ D:\Users\Gebruiker\Documents\GitHub\MinecraftTeamsPlugin\src\main\java\me\damasc
 D:\Users\Gebruiker\Documents\GitHub\MinecraftTeamsPlugin\src\main\java\me\damascus2000\minecraftsurvivalteamsplugin\TeleportBowEvent.java
 D:\Users\Gebruiker\Documents\GitHub\MinecraftTeamsPlugin\src\main\java\me\damascus2000\minecraftsurvivalteamsplugin\Commands\TeamSubCommand\TeamCreate.java
 D:\Users\Gebruiker\Documents\GitHub\MinecraftTeamsPlugin\src\main\java\me\damascus2000\minecraftsurvivalteamsplugin\Commands\TeleportBowCommands.java
+D:\Users\Gebruiker\Documents\GitHub\MinecraftTeamsPlugin\src\main\java\me\damascus2000\minecraftsurvivalteamsplugin\EventHandlers\AFKHandler.java
 D:\Users\Gebruiker\Documents\GitHub\MinecraftTeamsPlugin\src\main\java\me\damascus2000\minecraftsurvivalteamsplugin\Sign\TeamNamePrompt.java
 D:\Users\Gebruiker\Documents\GitHub\MinecraftTeamsPlugin\src\main\java\me\damascus2000\minecraftsurvivalteamsplugin\EventHandlers\PvpHandler.java
 D:\Users\Gebruiker\Documents\GitHub\MinecraftTeamsPlugin\src\main\java\me\damascus2000\minecraftsurvivalteamsplugin\YmlHandlers\YmlHandler.java
