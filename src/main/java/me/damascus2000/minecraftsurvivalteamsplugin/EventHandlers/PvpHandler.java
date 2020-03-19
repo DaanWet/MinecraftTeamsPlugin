@@ -29,8 +29,4 @@ public class PvpHandler implements Listener {
             }
         }
     }
-    @EventHandler
-    public void onBowShoot(ProjectileHitEvent e) {
-        ((Player) e.getEntity().getShooter()).getInventory().getItemInMainHand();
-    }
 }

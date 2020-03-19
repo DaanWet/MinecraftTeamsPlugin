@@ -26,7 +26,7 @@ public class Signs implements Listener {
         this.plugin = plugin;
     }
 
-    public void makeJoinBlocks(Block blunder, Block blright, Block blrightunder, String playername, String side){
+  /*  public void makeJoinBlocks(Block blunder, Block blright, Block blrightunder, String playername, String side){
         String teamname = tHandler.getTeam(playername);
         String teamcolor = tHandler.getTeamColor(teamname);
         blunder.setType(Material.WALL_SIGN);
@@ -49,7 +49,7 @@ public class Signs implements Listener {
         sright.update();
         srightunder.update();
         sunder.update();
-    }
+    }*/
     public void afterConversation(PlayerInteractEvent e){
         Sign sign = (Sign) e.getClickedBlock().getState();
         String temp = e.getPlayer().getName();

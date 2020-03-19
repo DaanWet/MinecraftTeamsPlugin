@@ -21,7 +21,6 @@ public class TeleportBowEvent implements Listener {
     }
 
 
-
     @EventHandler
     public void onBowShoot(ProjectileHitEvent e){
         if(e.getEntity() instanceof Arrow){

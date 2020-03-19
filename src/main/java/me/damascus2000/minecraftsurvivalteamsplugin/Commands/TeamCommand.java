@@ -6,6 +6,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,9 +35,6 @@ public class TeamCommand implements CommandExecutor {
         };
     }
 
-
-
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // /teams or /teams help
@@ -54,7 +52,8 @@ public class TeamCommand implements CommandExecutor {
             sender.sendMessage(ChatColor.AQUA + "/teams changeFX <effect>: " + ChatColor.RESET + "Changes the displayed effect of your teamname");
             sender.sendMessage(ChatColor.AQUA + "/teams list: " + ChatColor.RESET + "Gives a list of all the teams on the server");
             sender.sendMessage("-------" + ChatColor.AQUA + "Teams Help" + ChatColor.AQUA + "-------");
-        } else if (subCommands.containsKey(args[0])) {
+        }
+        else if (subCommands.containsKey(args[0].toLowerCase())) {
             subCommands.get(args[0].toLowerCase()).doCommand(sender, args);
         }
         //al other

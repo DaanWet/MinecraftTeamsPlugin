@@ -22,9 +22,11 @@ public class GUIBuilder {
     private Player player;
     ItemStack back = new ItemStack(Material.BARRIER);
     private Location loc;
+    private Main plugin;
 
 
     public GUIBuilder(Player player, Main plugin){
+        this.plugin = plugin;
         tHandler = plugin.getTeamsHandler();
         this.player = player;
         ItemMeta backMeta = back.getItemMeta();
@@ -129,8 +131,7 @@ public class GUIBuilder {
             }
         }
 
-        int grootte = ((teamsWithWarp.size() + 1)/ 2 * 9) * 2 + 9;
-        System.out.println(grootte);
+        int grootte = (((teamsWithWarp.size() + 1)/ 2) * 18) + 9;
         Inventory inv = createBasicInv(player, grootte , ChatColor.AQUA + "Travel Menu");
         int place = 11;
         int team = 0;
@@ -156,7 +157,7 @@ public class GUIBuilder {
                 j++;
             }
             team += 2;
-            place ++;
+            place += 10;
 
         }
         inv.setItem(grootte - 5, back);
@@ -173,7 +174,7 @@ public class GUIBuilder {
         double z = vector.getZ();
         double flatdistance = Math.sqrt(x*x + y*y);
         double distance = Math.sqrt(flatdistance*flatdistance + z*z);
-        int cost = (int)(0.256 * distance);
+        int cost = (int)(plugin.getConfig().getDouble("travelcost") * distance);
         for(int i = 0; i< 27; i++){
             if (i != 13) {
                 ItemStack black = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);

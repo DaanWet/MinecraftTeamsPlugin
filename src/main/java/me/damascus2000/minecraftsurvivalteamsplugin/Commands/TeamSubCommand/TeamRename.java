@@ -9,7 +9,6 @@ import org.bukkit.entity.Player;
 
 public class TeamRename extends TeamSubCommand{
 
-    private TeamsYmlHandler tHandler;
 
     public TeamRename(Main plugin){
         super(plugin);
@@ -24,7 +23,7 @@ public class TeamRename extends TeamSubCommand{
             if (team != null) {
                 if (args.length == 2 && !tHandler.checkTeam(args[1])) {
                     tHandler.renameTeam(team, args[1]);
-                    sendSucces(sender, succes + team + "to " + args[1]);
+                    sendSucces(sender, succes + team + " to " + args[1]);
                     for (Player onlineplayer : Bukkit.getOnlinePlayers()){
                         if (tHandler.getTeamMembers(args[1]).contains(onlineplayer.getName())){
                             new ChatPrefix(plugin).nameChange(onlineplayer);

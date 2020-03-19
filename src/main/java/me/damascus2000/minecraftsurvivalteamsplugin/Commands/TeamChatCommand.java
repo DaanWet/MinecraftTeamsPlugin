@@ -3,7 +3,6 @@ package me.damascus2000.minecraftsurvivalteamsplugin.Commands;
 import me.damascus2000.minecraftsurvivalteamsplugin.Main;
 import me.damascus2000.minecraftsurvivalteamsplugin.YmlHandlers.PlayerYmlHandler;
 import me.damascus2000.minecraftsurvivalteamsplugin.YmlHandlers.TeamsYmlHandler;
-import me.damascus2000.minecraftsurvivalteamsplugin.YmlHandlers.YmlHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -20,7 +19,7 @@ public class TeamChatCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         TeamsYmlHandler tHandler = plugin.getTeamsHandler();
-        PlayerYmlHandler pHandler = plugin.getplayerHandler();
+        PlayerYmlHandler pHandler = plugin.getPlayerHandler();
         if (sender instanceof Player) {
                 Player player = (Player) sender;
                 if (args.length == 0) {

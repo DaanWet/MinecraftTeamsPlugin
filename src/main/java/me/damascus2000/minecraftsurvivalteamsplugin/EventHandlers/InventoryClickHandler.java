@@ -36,8 +36,8 @@ public class InventoryClickHandler implements Listener {
             clicked = null;
         }
         GUIBuilder builder = new GUIBuilder(player, plugin);
-        boolean top = e.getClickedInventory().equals(inv.getTopInventory());
-        if (clicked != null) {
+        if (clicked != null && e.getClickedInventory() != null) {
+            boolean top = e.getClickedInventory().equals(inv.getTopInventory());
             if (top && inv.getTitle().equals(ChatColor.AQUA + "Main Menu")) {
                 if (clicked.equals(Material.ACTIVATOR_RAIL)) {
                     builder.createTravel();
@@ -62,13 +62,13 @@ public class InventoryClickHandler implements Listener {
             } else if (top && inv.getTitle().equals(ChatColor.AQUA + "Travel Menu")) {
                 if (clicked.equals(Material.BARRIER)) {
                     builder.createMainMenu();
-                } else {
+                } else if (!clicked.equals(Material.BLACK_STAINED_GLASS_PANE)){
                     String team = e.getCurrentItem().getItemMeta().getDisplayName().substring(2);
                     Location loc = tHandler.getWarp(team);
                     builder.createFuelMenu(loc, team);
                 }
                 e.setCancelled(true);
-            } else if (inv.getTitle().equals("Fuel Deposit")) {
+            } else if (inv.getTitle().equals(ChatColor.BLACK + "Fuel Deposit")) {
                 if (top && clicked.equals(Material.BARRIER)) {
                     builder.createTravel();
                     e.setCancelled(true);
