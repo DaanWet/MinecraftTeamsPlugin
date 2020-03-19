@@ -17,7 +17,7 @@ public class TeamChangeColor extends TeamSubCommand {
 
     // /teams changecolor color
     public void doCommand(CommandSender sender, String[] args){
-        if (args.length == 2 && colors.contains(args[1])){
+        if (args.length == 2 && colors.contains(args[1].toLowerCase())){
             if (sender instanceof Player){
                 Player player = (Player) sender;
                 String team = tHandler.getTeam(player.getName());

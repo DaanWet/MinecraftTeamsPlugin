@@ -66,7 +66,9 @@ public class TeamsYmlHandler extends YmlHandler{
             if (config.getStringList(teamName + ".Members").contains(playername)) {
                 return teamName;
             }
+
         }
+
         return null;
     }
 
