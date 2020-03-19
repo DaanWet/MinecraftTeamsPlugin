@@ -1,7 +1,6 @@
 package me.damascus2000.minecraftsurvivalteamsplugin.YmlHandlers;
 
 import me.damascus2000.minecraftsurvivalteamsplugin.Main;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
