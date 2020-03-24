@@ -51,6 +51,7 @@ public final class Main extends JavaPlugin {
         plm.registerEvents(new Chat(this), this);
         plm.registerEvents(new InventoryClickHandler(this), this);
         plm.registerEvents(afkHandler, this);
+        plm.registerEvents(new Sleep(this), this);
         //getServer().getPluginManager().registerEvents(new TeleportBowEvent(this), this);
     }
 
