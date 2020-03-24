@@ -45,28 +45,41 @@ public class AFKHandler implements Listener {
     }
 
     public void addPlayer(Player player){
-        BukkitTask task =  new BukkitRunnable() {
-            @Override
-            public void run() {
-                Bukkit.getServer().broadcastMessage(player.getDisplayName() + " has gone AFK");
-                plugin.getPlayerHandler().setAFK(player.getName(), true);
-                new ChatPrefix(plugin).nameChange(player);
-                long timeTillKick = player.getStatistic(Statistic.PLAY_ONE_MINUTE) - (2 * pHandler.getAFKTIme(player.getDisplayName()) - 4800L);
+        if (plugin.getPlayerHandler().isAFK(player.getName())){
+            long timeTillKick = player.getStatistic(Statistic.PLAY_ONE_MINUTE) - (2 * pHandler.getAFKTIme(player.getDisplayName()));
+            BukkitTask kickTask =  new BukkitRunnable () {
+                @Override
+                public void run() {
+                    player.kickPlayer("You have been AFK for too long");
+                }
+            }.runTaskLater(plugin, timeTillKick);
+            kicks.put(player.getUniqueId(), kickTask);
+        } else {
+            BukkitTask task =  new BukkitRunnable() {
+                @Override
+                public void run() {
+                    Bukkit.getServer().broadcastMessage(player.getDisplayName() + " has gone AFK");
+                    plugin.getPlayerHandler().setAFK(player.getName(), true);
+                    new ChatPrefix(plugin).nameChange(player);
+
+                    long timeTillKick = player.getStatistic(Statistic.PLAY_ONE_MINUTE) - (2 * pHandler.getAFKTIme(player.getDisplayName()) - 4800L);
+
+                    BukkitTask kickTask =  new BukkitRunnable () {
+                        @Override
+                        public void run() {
+                            player.kickPlayer("You have been AFK for too long");
+                        }
+                    }.runTaskLater(plugin, timeTillKick);
+
+                    kicks.put(player.getUniqueId(), kickTask);
 
 
-                BukkitTask kickTask =  new BukkitRunnable () {
-                    @Override
-                    public void run() {
-                        player.kickPlayer("You have been AFK for too long");
-                    }
-                }.runTaskLater(plugin, timeTillKick);
-                kicks.put(player.getUniqueId(), kickTask);
+                }
+            }.runTaskLater(plugin, 4800L);
+            starts.put(player.getUniqueId(), task);
+        }
+       times.put(player.getUniqueId(), player.getWorld().getFullTime());
 
-
-            }
-        }.runTaskLater(plugin, 4800L);
-        starts.put(player.getUniqueId(), task);
-        times.put(player.getUniqueId(), player.getWorld().getFullTime());
 
     }
 
@@ -77,7 +90,7 @@ public class AFKHandler implements Listener {
             long dur = player.getWorld().getFullTime() - times.get(player.getUniqueId());
             Bukkit.getServer().broadcastMessage(player.getName() + " has been AFK for " +  dur + " ticks or " + (dur / (20 * 60)) + " minutes");
             pHandler.setAFKTime(player.getName(), dur + pHandler.getAFKTIme(player.getName()));
-            Bukkit.getServer().broadcastMessage("Total afk time:" + pHandler.getAFKTIme(player.getName()));
+            Bukkit.getServer().broadcastMessage("Total afk time: " + pHandler.getAFKTIme(player.getName()));
             kicks.get(playerID).cancel();
             kicks.remove(playerID);
         }

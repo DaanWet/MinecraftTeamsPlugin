@@ -33,7 +33,10 @@ public class Chat implements Listener {
         if (pHandler.checkTeamChat(e.getPlayer().getName()).equalsIgnoreCase("true")){
             e.setCancelled(true);
             for (String player : tHandler.getTeamMembers(tHandler.getTeam(e.getPlayer().getName()))) {
-                Bukkit.getServer().getPlayer(player).sendMessage(ChatColor.AQUA + "TC: " + ChatColor.RESET + e.getPlayer().getDisplayName() + ": " + e.getMessage());
+                Player pl = Bukkit.getServer().getPlayer(player);
+                if (pl != null) {
+                    pl.sendMessage(ChatColor.AQUA + "TC: " + ChatColor.RESET + e.getPlayer().getDisplayName() + ": " + e.getMessage());
+                }
             }
             Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "TC: " + ChatColor.RESET + e.getPlayer().getDisplayName() + ": " + e.getMessage());
         } else{

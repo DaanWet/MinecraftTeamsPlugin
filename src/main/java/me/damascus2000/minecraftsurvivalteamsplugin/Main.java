@@ -14,6 +14,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 
@@ -44,17 +45,21 @@ public final class Main extends JavaPlugin {
         getCommand("teams").setTabCompleter(new TabCompletion(this));
         getCommand("teamchat").setExecutor(new TeamChatCommand(this));
         getCommand("travel").setExecutor(new TeleportCommand(this));
-        getServer().getPluginManager().registerEvents(new Signs(this), this);
-        getServer().getPluginManager().registerEvents(new PvpHandler(teamsYmlHandler), this);
-        getServer().getPluginManager().registerEvents(new Chat(this), this);
-        getServer().getPluginManager().registerEvents(new InventoryClickHandler(this), this);
-        getServer().getPluginManager().registerEvents(afkHandler, this);
+        PluginManager plm = getServer().getPluginManager();
+        plm.registerEvents(new Signs(this), this);
+        plm.registerEvents(new PvpHandler(teamsYmlHandler), this);
+        plm.registerEvents(new Chat(this), this);
+        plm.registerEvents(new InventoryClickHandler(this), this);
+        plm.registerEvents(afkHandler, this);
         //getServer().getPluginManager().registerEvents(new TeleportBowEvent(this), this);
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        for (Player player : getServer().getOnlinePlayers()){
+            afkHandler.removePlayer(player);
+        }
         playerYmlHandler.saveYml();
         teamsYmlHandler.saveYml();
     }
