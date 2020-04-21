@@ -52,7 +52,7 @@ public class Sleep implements Listener {
             };
             if (onlinepl == 2){
                 br.runTaskLater(plugin, 40);
-            } else if((counter * 100) / onlinepl >= 60) {
+            } else if((counter * 100) / onlinepl >= 50) {
                 br.runTaskLater(plugin, 40);
             }
         }

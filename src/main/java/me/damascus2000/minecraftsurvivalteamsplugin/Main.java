@@ -1,33 +1,25 @@
 package me.damascus2000.minecraftsurvivalteamsplugin;
 
-import com.google.common.collect.Lists;
+
 import me.damascus2000.minecraftsurvivalteamsplugin.EventHandlers.*;
 import me.damascus2000.minecraftsurvivalteamsplugin.Commands.*;
 import me.damascus2000.minecraftsurvivalteamsplugin.Sign.Signs;
 import me.damascus2000.minecraftsurvivalteamsplugin.YmlHandlers.PlayerYmlHandler;
 import me.damascus2000.minecraftsurvivalteamsplugin.YmlHandlers.TeamsYmlHandler;
-import me.damascus2000.minecraftsurvivalteamsplugin.YmlHandlers.YmlHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
+
 
 public final class Main extends JavaPlugin {
 
     private PlayerYmlHandler playerYmlHandler;
     private TeamsYmlHandler teamsYmlHandler;
-    private Scoreboard scoreboard;
     private AFKHandler afkHandler;
 
 
@@ -35,6 +27,7 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         //getCommand("tpbow").setExecutor(new TeleportBowCommands(this));
+
         playerYmlHandler = new PlayerYmlHandler(this);
         teamsYmlHandler = new TeamsYmlHandler(this);
         afkHandler = new AFKHandler(this);
@@ -52,6 +45,7 @@ public final class Main extends JavaPlugin {
         plm.registerEvents(new InventoryClickHandler(this), this);
         plm.registerEvents(afkHandler, this);
         plm.registerEvents(new Sleep(this), this);
+        plm.registerEvents(new TeamsScoreboard(this), this);
         //getServer().getPluginManager().registerEvents(new TeleportBowEvent(this), this);
     }
 
