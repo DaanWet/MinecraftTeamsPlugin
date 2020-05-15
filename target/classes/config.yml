@@ -1,5 +1,0 @@
-bow-name: '&fTeleport Bow'
-bow-description: '&eThis bow will teleport you where ever you shoot your arrow!'
-landed-msg: '&aYou have sucsessfully landed!'
-travel: false
-travelcost: 0.256
