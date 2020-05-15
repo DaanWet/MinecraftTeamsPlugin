@@ -27,6 +27,7 @@ public class TeamsYmlHandler extends YmlHandler{
         config.createSection(name + ".Members");
         config.createSection(name + ".Effect");
         config.createSection(name + ".Warp");
+        config.createSection(name +".Villagers");
         config.set(name + ".Effect", "Bold");
         config.set(name + ".Color", color);
         config.set(name + ".Members", members);
@@ -129,4 +130,18 @@ public class TeamsYmlHandler extends YmlHandler{
         saveYml();
     }
 
+    public void setVillager(String team, String uuid, int value){
+        if (!config.contains(team + ".Villagers." + uuid)){
+            config.createSection(team + ".Villagers." + uuid);
+        }
+        config.set(team + ".Villagers." + uuid, value);
+    }
+
+    public int getVillager(String team, String uuid){
+        if (config.contains(team + ".Villagers." + uuid)) {
+            return config.getInt(team + ".Villagers." + uuid);
+        } else {
+            return -1;
+        }
+    }
 }

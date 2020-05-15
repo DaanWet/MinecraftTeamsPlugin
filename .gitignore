@@ -1,3 +1,5 @@
 .idea/
 target/classes/
-target/maven-status
+target/maven-archiver/
+target/maven-status/
+target/original-MinecraftSurvivalTeamsPlugin-1.0-SNAPSHOT.jar

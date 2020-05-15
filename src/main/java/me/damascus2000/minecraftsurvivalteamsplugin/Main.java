@@ -27,7 +27,6 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         //getCommand("tpbow").setExecutor(new TeleportBowCommands(this));
-
         playerYmlHandler = new PlayerYmlHandler(this);
         teamsYmlHandler = new TeamsYmlHandler(this);
         afkHandler = new AFKHandler(this);
@@ -46,6 +45,7 @@ public final class Main extends JavaPlugin {
         plm.registerEvents(afkHandler, this);
         plm.registerEvents(new Sleep(this), this);
         plm.registerEvents(new TeamsScoreboard(this), this);
+        plm.registerEvents(new VillagerTrade(this), this);
         //getServer().getPluginManager().registerEvents(new TeleportBowEvent(this), this);
     }
 
