@@ -1,7 +1,7 @@
 name: MinecraftSurvivalTeamsPlugin
 version: ${project.version}
 main: me.damascus2000.minecraftsurvivalteamsplugin.Main
-api-version: 1.15
+api-version: 1.16
 author: Damascus20000
 description: A minecraft survival plugin including Teams
 commands:
@@ -14,6 +14,9 @@ commands:
   teamchat:
       description:
         usage /teamchat
+  claimPerms:
+    description: Claim permissions
+    usage: /<command>
 permissions:
   teams.*:
     description: Gives acces to all team commands
