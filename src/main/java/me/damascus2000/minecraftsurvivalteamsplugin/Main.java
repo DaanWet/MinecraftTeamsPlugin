@@ -38,6 +38,7 @@ public final class Main extends JavaPlugin {
         getCommand("teamchat").setExecutor(new TeamChatCommand(this));
         getCommand("travel").setExecutor(new TeleportCommand(this));
         getCommand("claimPerms").setExecutor(new ClaimPerm(this));
+        getCommand("cure").setExecutor(new CureCommand());
         PluginManager plm = getServer().getPluginManager();
         plm.registerEvents(new Signs(this), this);
         plm.registerEvents(new PvpHandler(teamsYmlHandler), this);

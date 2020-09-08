@@ -2,10 +2,10 @@ package me.damascus2000.minecraftsurvivalteamsplugin.EventHandlers;
 
 import me.damascus2000.minecraftsurvivalteamsplugin.Main;
 import me.damascus2000.minecraftsurvivalteamsplugin.YmlHandlers.TeamsYmlHandler;
-import net.minecraft.server.v1_15_R1.Entity;
-import net.minecraft.server.v1_15_R1.NBTTagCompound;
-import net.minecraft.server.v1_15_R1.NBTTagList;
-import org.bukkit.craftbukkit.v1_15_R1.entity.CraftVillager;
+import net.minecraft.server.v1_16_R2.Entity;
+import net.minecraft.server.v1_16_R2.NBTTagCompound;
+import net.minecraft.server.v1_16_R2.NBTTagList;
+import org.bukkit.craftbukkit.v1_16_R2.entity.CraftVillager;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -40,22 +40,26 @@ public class VillagerTrade implements Listener {
                 for (int i = 0; i < gossips.size(); i++) {
                     NBTTagCompound gossip = gossips.getCompound(i);
                     if (gossip.getString("Type").equals("major_positive")) {
-                        majorPositiveS.put(new UUID(gossip.getLong("TargetMost"), gossip.getLong("TargetLeast")), gossip.getInt("Value"));
+                        int[] uuid = gossip.getIntArray("Target");
+                        long most = (long)uuid[0] << 32 | uuid[1] & 0xFFFFFFFFL;
+                        long least = (long)uuid[2] << 32 | uuid[3] & 0xFFFFFFFFL;
+                        majorPositiveS.put(new UUID(most, least), gossip.getInt("Value"));
                     }
                 }
                 int value = 0;
                 UUID playerUUID = e.getPlayer().getUniqueId();
                 for (UUID uid : majorPositiveS.keySet()) {
-                    if (!uid.equals(playerUUID) &&
-                            handler.getTeam(plugin.getServer().getOfflinePlayer(uid).getName()).equals(team)) {
+                    if (handler.getTeam(plugin.getServer().getOfflinePlayer(uid).getName()).equals(team)) {
                         value = Math.max(value, majorPositiveS.get(uid));
                     }
                 }
                 if (majorPositiveS.containsKey(playerUUID)) {
                     for (int i = 0; i < gossips.size(); i++) {
                         NBTTagCompound gossip = gossips.getCompound(i);
-                        if (gossip.getString("Type").equals("major_positive") && gossip.getLong("TargetMost") == playerUUID.getMostSignificantBits()
-                                && gossip.getLong("TargetLeast") == playerUUID.getLeastSignificantBits()) {
+                        int[] uuid = gossip.getIntArray("Target");
+                        long most = (long)uuid[0] << 32 | uuid[1] & 0xFFFFFFFFL;
+                        long least = (long)uuid[2] << 32 | uuid[3] & 0xFFFFFFFFL;
+                        if (gossip.getString("Type").equals("major_positive") && new UUID(most, least).equals(playerUUID)) {
                             gossip.setInt("Value", value);
                         }
                     }
@@ -63,12 +67,15 @@ public class VillagerTrade implements Listener {
                     NBTTagCompound majorPositive = new NBTTagCompound();
                     majorPositive.setString("Type", "major_positive");
                     majorPositive.setInt("Value", value);
-                    UUID id = e.getPlayer().getUniqueId();
-                    majorPositive.setLong("TargetMost", id.getMostSignificantBits());
-                    majorPositive.setLong("TargetLeast", id.getLeastSignificantBits());
+                    int[] array = new int[4];
+                    array[0] = (int) (playerUUID.getMostSignificantBits() >> 32);
+                    array[1] = (int) (playerUUID.getMostSignificantBits());
+                    array[2] = (int) (playerUUID.getLeastSignificantBits() >> 32);
+                    array[3] = (int) (playerUUID.getLeastSignificantBits());
+                    majorPositive.setIntArray("Target", array);
                     gossips.add(majorPositive);
                 }
-                villager.f(tag);
+                villager.load(tag);
 
             }
         }

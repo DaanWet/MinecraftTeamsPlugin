@@ -17,6 +17,9 @@ commands:
   claimPerms:
     description: Claim permissions
     usage: /<command>
+  cure:
+    description: Some shit
+    usage: /<command>
 permissions:
   teams.*:
     description: Gives acces to all team commands
