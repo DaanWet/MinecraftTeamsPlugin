@@ -53,7 +53,7 @@ public class GUIBuilder {
         ItemStack createw;
         ItemMeta createMeta;
         ArrayList<String> createLore;
-        if (tHandler.getTeam(player.getName()) != null){
+        if (tHandler.getTeam(player.getUniqueId()) != null){
             createw = new ItemStack(Material.CRAFTING_TABLE);
             createMeta = createw.getItemMeta();
             createMeta.setDisplayName(ChatColor.GREEN + "Create Travel Point");
@@ -92,7 +92,7 @@ public class GUIBuilder {
         ItemStack current = new ItemStack(Material.BLUE_BED);
         ItemMeta currentMeta = current.getItemMeta();
         currentMeta.setDisplayName(ChatColor.BLUE + "Current Warp");
-        Location loc = tHandler.getWarp(tHandler.getTeam(player.getName()));
+        Location loc = tHandler.getWarp(tHandler.getTeam(player.getUniqueId()));
         ArrayList<String> currentLore;
         if (loc != null){
             currentLore = new ArrayList<>(Collections.singletonList(ChatColor.AQUA + String.format("X: %s, Y: %s, Z: %s", loc.getBlockX(), loc.getBlockY(), loc.getBlockZ())));

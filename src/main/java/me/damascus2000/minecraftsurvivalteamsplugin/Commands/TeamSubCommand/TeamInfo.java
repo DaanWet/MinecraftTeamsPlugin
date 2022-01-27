@@ -35,7 +35,7 @@ public class TeamInfo extends TeamSubCommand {
 
         String color = tHandler.getTeamColor(args[1]);
         sendMessage(sender, "Name: " + ChatColor.valueOf(color) + args[1]);
-        sendMessage(sender, "Members: " + ChatColor.valueOf(color) + tHandler.getTeamMembers(args[1]));
+        sendMessage(sender, "Members: " + ChatColor.valueOf(color) + tHandler.getTeamMembers(args[1]).stream().map(m -> plugin.getServer().getOfflinePlayer(m).getName()));
 
 
     }

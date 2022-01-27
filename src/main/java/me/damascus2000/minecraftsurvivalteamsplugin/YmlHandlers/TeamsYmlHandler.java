@@ -6,9 +6,11 @@ import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class TeamsYmlHandler extends YmlHandler {
 
@@ -28,21 +30,21 @@ public class TeamsYmlHandler extends YmlHandler {
         config.createSection(name + ".Villagers");
         config.set(name + ".Effect", "Bold");
         config.set(name + ".Color", color);
-        config.set(name + ".Members", members);
+        config.set(name + ".Members", members.stream().map(UUID::toString).collect(Collectors.toList()));
         config.set(name + ".Warp", null);
         saveYml();
     }
 
     public List<UUID> getTeamMembers(String team){
-        return (List<UUID>) config.getList(team + ".Members");
+        return config.getStringList(team + ".Members").stream().map(UUID::fromString).collect(Collectors.toList());
     }
 
     public void joinTeam(String team, UUID player){
         if (config.getStringList(team + ".Members").isEmpty()){
-            config.set(team + ".Members", Collections.singletonList(player));
+            config.set(team + ".Members", Collections.singletonList(player.toString()));
         } else {
-            List<UUID> templist = (List<UUID>) config.getList(team + ".Members");
-            templist.add(player);
+            List<String> templist = config.getStringList(team + ".Members");
+            templist.add(player.toString());
             config.set(team + ".Members", templist);
         }
         saveYml();
@@ -51,8 +53,8 @@ public class TeamsYmlHandler extends YmlHandler {
     public void exitTeam(UUID player){
         String team = getTeam(player);
         if (team != null){
-            List<UUID> tempList = (List<UUID>) config.getList(team + ".Members");
-            tempList.remove(player);
+            List<String> tempList = config.getStringList(team + ".Members");
+            tempList.remove(player.toString());
             config.set(team + ".Members", tempList);
             saveYml();
         }
@@ -60,13 +62,13 @@ public class TeamsYmlHandler extends YmlHandler {
     }
 
     public String getTeam(UUID player){
+        String p = player.toString();
         for (String teamName : config.getKeys(false)){
-            if (config.getList(teamName + ".Members").contains(player)){
+            if (config.getStringList(teamName + ".Members").contains(p)){
                 return teamName;
             }
 
         }
-
         return null;
     }
 
@@ -83,7 +85,7 @@ public class TeamsYmlHandler extends YmlHandler {
         saveYml();
     }
 
-    public Boolean checkTeam(String teamname){
+    public boolean checkTeam(String teamname){
         for (String team : config.getKeys(false)){
             if (team.equals(teamname)){
                 return true;
@@ -128,15 +130,17 @@ public class TeamsYmlHandler extends YmlHandler {
     }
 
     public void setVillager(String team, UUID uuid, int value){
-        if (!config.contains(team + ".Villagers." + uuid)){
-            config.createSection(team + ".Villagers." + uuid);
+        String u = uuid.toString();
+        if (!config.contains(team + ".Villagers." + u)){
+            config.createSection(team + ".Villagers." + u);
         }
-        config.set(team + ".Villagers." + uuid, value);
+        config.set(team + ".Villagers." + u, value);
     }
 
     public int getVillager(String team, UUID uuid){
-        if (config.contains(team + ".Villagers." + uuid)){
-            return config.getInt(team + ".Villagers." + uuid);
+        String u = uuid.toString();
+        if (config.contains(team + ".Villagers." + u)){
+            return config.getInt(team + ".Villagers." + u);
         } else {
             return -1;
         }
