@@ -2,6 +2,7 @@ package me.damascus2000.minecraftsurvivalteamsplugin.Commands.TeamSubCommand;
 
 import me.damascus2000.minecraftsurvivalteamsplugin.Main;
 import me.damascus2000.minecraftsurvivalteamsplugin.YmlHandlers.TeamsYmlHandler;
+import me.damascus2000.minecraftsurvivalteamsplugin.utils.MessageException;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
@@ -29,12 +30,8 @@ public abstract class TeamSubCommand {
     }
 
 
-    public abstract void doCommand(CommandSender sender, String[] args);
+    public abstract void doCommand(CommandSender sender, String[] args) throws MessageException;
 
-    public void sendError(CommandSender sender, String error){
-        sender.sendMessage(ChatColor.DARK_RED + error);
-
-    }
     public void sendSucces(CommandSender sender, String message){
         sender.sendMessage(ChatColor.GREEN + message);
     }

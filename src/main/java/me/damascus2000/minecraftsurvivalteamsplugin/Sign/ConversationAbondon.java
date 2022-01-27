@@ -7,14 +7,16 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 public class ConversationAbondon implements ConversationAbandonedListener {
 
-    private PlayerInteractEvent e;
-    private Main plugin;
+    private final PlayerInteractEvent e;
+    private final Main plugin;
+
     public ConversationAbondon(PlayerInteractEvent event, Main plugin){
         e = event;
         this.plugin = plugin;
     }
+
     @Override
-    public void conversationAbandoned(ConversationAbandonedEvent event) {
+    public void conversationAbandoned(ConversationAbandonedEvent event){
         if (event.gracefulExit()){
             new Signs(plugin).afterConversation(e);
         }

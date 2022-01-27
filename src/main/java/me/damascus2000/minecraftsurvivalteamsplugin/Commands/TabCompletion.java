@@ -13,7 +13,7 @@ import java.util.List;
 
 public class TabCompletion implements TabCompleter {
 
-    private Main plugin;
+    private final Main plugin;
 
     public TabCompletion(Main plugin){
         this.plugin = plugin;
@@ -21,7 +21,7 @@ public class TabCompletion implements TabCompleter {
 
 
     @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args){
         List<String> s1 = Arrays.asList("help", "create", "join", "leave", "info", "kick", "remove", "rename", "changecolor", "list", "changeFX");
         List<String> teams = plugin.getTeamsHandler().getTeams();
         List<String> colors = Arrays.asList("Aqua", "Green", "Red", "Black", "Blue", "Gray", "Gold", "Yellow", "Dark_Aqua", "Dark_Blue", "Dark_gray", "Dark_Green", "Dark_Purple", "Light_Purple");
@@ -40,9 +40,9 @@ public class TabCompletion implements TabCompleter {
             return Flist;
         }
         if (args.length == 2){
-            if (args[0].equalsIgnoreCase("info") || args[0].equalsIgnoreCase("join") ||  args[0].equalsIgnoreCase("remove") ) {
-                for (String s : teams) {
-                    if (s.startsWith(args[1])) {
+            if (args[0].equalsIgnoreCase("info") || args[0].equalsIgnoreCase("join") || args[0].equalsIgnoreCase("remove")){
+                for (String s : teams){
+                    if (s.startsWith(args[1])){
                         Flist.add(s);
                     }
                 }
@@ -72,7 +72,7 @@ public class TabCompletion implements TabCompleter {
         }
         if (args.length == 3)
             if (args[0].equalsIgnoreCase("create")){
-                for(String s : colors){
+                for (String s : colors){
                     if (s.toLowerCase().startsWith(args[2].toLowerCase())){
                         Flist.add(s);
                     }

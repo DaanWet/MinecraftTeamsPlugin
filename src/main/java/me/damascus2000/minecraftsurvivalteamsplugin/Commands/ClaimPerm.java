@@ -13,25 +13,25 @@ import java.util.UUID;
 public class ClaimPerm implements CommandExecutor {
 
 
-    private HashMap<UUID, PermissionAttachment> attachments;
     private final Main plugin;
+    private final HashMap<UUID, PermissionAttachment> attachments;
 
     public ClaimPerm(Main plugin){
-        this.attachments =  new HashMap<>();
+        this.attachments = new HashMap<>();
         this.plugin = plugin;
     }
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings){
 
         if (commandSender instanceof Player){
             Player player = (Player) commandSender;
             PermissionAttachment attachment = player.addAttachment(plugin);
-            attachment.setPermission("bukkit.command.timings",true);
+            attachment.setPermission("bukkit.command.timings", true);
             attachment = player.addAttachment(plugin);
-            attachment.setPermission("bukkit.command.tps",true);
+            attachment.setPermission("bukkit.command.tps", true);
             attachment = player.addAttachment(plugin);
-            attachment.setPermission("minecraft.command.scoreboard",true);
+            attachment.setPermission("minecraft.command.scoreboard", true);
         }
         return true;
     }

@@ -1,27 +1,15 @@
 package me.damascus2000.minecraftsurvivalteamsplugin.Commands;
 
-import net.minecraft.server.v1_16_R2.NBTTagCompound;
-import net.minecraft.server.v1_16_R2.NBTTagList;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_16_R2.entity.CraftVillager;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Villager;
-
-
-import java.util.Collection;
-import java.util.UUID;
 
 public class CureCommand implements CommandExecutor {
 
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (commandSender instanceof Player){
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings){
+        /*if (commandSender instanceof Player){
             Player player = (Player) commandSender;
             if (player.isOp()){
                 int x = Integer.parseInt(strings[0]);
@@ -64,7 +52,7 @@ public class CureCommand implements CommandExecutor {
                 }
             }
         }
-
+*/
         return false;
     }
 }

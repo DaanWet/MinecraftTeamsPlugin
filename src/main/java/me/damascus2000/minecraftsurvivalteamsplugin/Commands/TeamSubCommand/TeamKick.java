@@ -2,7 +2,7 @@ package me.damascus2000.minecraftsurvivalteamsplugin.Commands.TeamSubCommand;
 
 import me.damascus2000.minecraftsurvivalteamsplugin.EventHandlers.ChatPrefix;
 import me.damascus2000.minecraftsurvivalteamsplugin.Main;
-import me.damascus2000.minecraftsurvivalteamsplugin.YmlHandlers.TeamsYmlHandler;
+import me.damascus2000.minecraftsurvivalteamsplugin.utils.MessageException;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -20,32 +20,32 @@ public class TeamKick extends TeamSubCommand {
     }
 
     // /teams kick playername
-    public void doCommand(CommandSender sender, String[] args){
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            if (player.hasPermission("teams.kick")){
-                String team = tHandler.getTeam(player.getName());
-                if (team != null){
-                    if (args.length == 2){
-                        if (team.equals(tHandler.getTeam(args[1]))){
-                            tHandler.exitTeam(args[1]);
-                            sendSucces(sender, succes + ChatColor.RED + args[1]);
-                            Player player2 = Bukkit.getPlayer(args[1]);
-                            if (Bukkit.getOnlinePlayers().contains(player2)){
-                                new ChatPrefix(plugin).nameChange(player2);
-                            }
-                        } else {
-                            sendError(sender, notmemberError);
-                        }
-                    } else {
-                        sendError(sender, playernameError);
-                    }
-                } else {
-                    sendError(sender, notInTeamError);
-                }
-            }
-        } else {
-            sendError(sender, playerError);
+    public void doCommand(CommandSender sender, String[] args) throws MessageException{
+        if (!(sender instanceof Player)){
+            throw new MessageException(playerError);
+        }
+        Player player = (Player) sender;
+        if (!player.hasPermission("teams.kick")){
+            return;
+        }
+        String team = tHandler.getTeam(player.getUniqueId());
+        if (team == null){
+            throw new MessageException(notInTeamError);
+        }
+        if (args.length != 2){
+            throw new MessageException(playernameError);
+        }
+
+        Player player1 = plugin.getServer().getPlayerExact(args[1]);
+
+
+        if (player1 == null || !team.equals(tHandler.getTeam(player1.getUniqueId()))){
+            throw new MessageException(notmemberError);
+        }
+        tHandler.exitTeam(player1.getUniqueId());
+        sendSucces(sender, succes + ChatColor.RED + args[1]);
+        if (Bukkit.getOnlinePlayers().contains(player1)){
+            new ChatPrefix(plugin).nameChange(player1);
         }
     }
 }

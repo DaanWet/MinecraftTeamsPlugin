@@ -5,13 +5,12 @@ import me.damascus2000.minecraftsurvivalteamsplugin.YmlHandlers.PlayerYmlHandler
 import me.damascus2000.minecraftsurvivalteamsplugin.YmlHandlers.TeamsYmlHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 
 
 public class ChatPrefix {
 
-    private TeamsYmlHandler tHandler;
-    private PlayerYmlHandler pHandler;
+    private final TeamsYmlHandler tHandler;
+    private final PlayerYmlHandler pHandler;
     private AFKHandler afkHandler;
 
     public ChatPrefix(Main plugin){
@@ -21,16 +20,16 @@ public class ChatPrefix {
 
     public void nameChange(Player p){
         String name = p.getName();
-        String team = tHandler.getTeam(name);
+        String team = tHandler.getTeam(p.getUniqueId());
         String displayname;
         if (team != null){
-            displayname = "" + ChatColor.valueOf(tHandler.getTeamColor(team)) + "" + ChatColor.valueOf(tHandler.getTeamFX(team)) + "[" + team + "] " + ChatColor.RESET + name + "" ;
+            displayname = "" + ChatColor.valueOf(tHandler.getTeamColor(team)) + "" + ChatColor.valueOf(tHandler.getTeamFX(team)) + "[" + team + "] " + ChatColor.RESET + name + "";
 
         } else {
-            displayname = "" + ChatColor.WHITE + "" + ChatColor.BOLD  + "[FreeBird] " + ChatColor.RESET + name;
+            displayname = "" + ChatColor.WHITE + "" + ChatColor.BOLD + "[FreeBird] " + ChatColor.RESET + name;
 
         }
-        if (pHandler.isAFK(p.getName())){
+        if (pHandler.isAFK(p.getUniqueId())){
             displayname = ChatColor.GRAY + "" + ChatColor.stripColor(displayname);
         }
         p.setDisplayName(displayname);

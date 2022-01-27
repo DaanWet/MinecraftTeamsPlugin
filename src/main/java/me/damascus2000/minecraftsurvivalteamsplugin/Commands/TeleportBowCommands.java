@@ -17,15 +17,15 @@ public class TeleportBowCommands implements CommandExecutor {
 
     Main plugin;
 
-    public TeleportBowCommands(Main plugin) {
+    public TeleportBowCommands(Main plugin){
         this.plugin = plugin;
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender instanceof Player){
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
+        if (sender instanceof Player){
             Player player = (Player) sender;
-            if(player.hasPermission("tpbow.spawn")){
+            if (player.hasPermission("tpbow.spawn")){
                 ItemStack teleport_bow = new ItemStack(Material.BOW);
                 teleport_bow.addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 666);
 
@@ -40,7 +40,7 @@ public class TeleportBowCommands implements CommandExecutor {
                 player.getInventory().addItem(teleport_bow);
             }
 
-        }else{
+        } else {
             System.out.println("You must be a player to use this command.");
         }
 

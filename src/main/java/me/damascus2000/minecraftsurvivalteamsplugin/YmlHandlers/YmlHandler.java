@@ -8,18 +8,18 @@ import java.io.IOException;
 
 public abstract class YmlHandler {
 
-    private Main plugin;
     protected YamlConfiguration config;
     protected File ymlFile;
+    private final Main plugin;
 
     public YmlHandler(Main plugin){
         this.plugin = plugin;
     }
 
-    public void saveYml() {
+    public void saveYml(){
         try {
             config.save(ymlFile);
-        } catch (IOException e) {
+        } catch (IOException e){
             e.printStackTrace();
         }
     }

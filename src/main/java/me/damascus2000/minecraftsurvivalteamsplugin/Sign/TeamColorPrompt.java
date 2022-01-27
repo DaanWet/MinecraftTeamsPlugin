@@ -8,23 +8,26 @@ import org.bukkit.conversations.Prompt;
 import org.bukkit.conversations.ValidatingPrompt;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 public class TeamColorPrompt extends ValidatingPrompt {
-    private String player;
-    private TeamsYmlHandler tHandler;
-    public TeamColorPrompt(String playername, Main plugin){
-        player  = playername;
+    private final UUID player;
+    private final TeamsYmlHandler tHandler;
+
+    public TeamColorPrompt(UUID playername, Main plugin){
+        player = playername;
         tHandler = plugin.getTeamsHandler();
     }
 
     @Override
-    public String getPromptText(ConversationContext context) {
+    public String getPromptText(ConversationContext context){
         return "Please enter the color of your team";
     }
 
     @Override
-    protected boolean isInputValid(ConversationContext context, String input) {
+    protected boolean isInputValid(ConversationContext context, String input){
         List<String> colors = Arrays.asList("aqua", "green", "red", "black", "blue", "gray", "gold", "purple", "yellow", "dark_aqua", "dark_blue", "dark_gray", "dark_green", "dark_purple", "light_Purple");
         if (colors.contains(input.toLowerCase())){
             return true;
@@ -36,10 +39,9 @@ public class TeamColorPrompt extends ValidatingPrompt {
     }
 
     @Override
-    protected Prompt acceptValidatedInput(ConversationContext context, String input) {
+    protected Prompt acceptValidatedInput(ConversationContext context, String input){
         context.setSessionData("Color", input);
-        String[] list = {player};
-        tHandler.createTeam(context.getSessionData("Name").toString(), context.getSessionData("Color").toString(), Arrays.asList(list));
+        tHandler.createTeam(context.getSessionData("Name").toString(), context.getSessionData("Color").toString(), Collections.singletonList(player));
         context.getForWhom().sendRawMessage("Team created");
         return END_OF_CONVERSATION;
     }

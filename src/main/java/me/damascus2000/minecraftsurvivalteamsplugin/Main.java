@@ -1,8 +1,8 @@
 package me.damascus2000.minecraftsurvivalteamsplugin;
 
 
-import me.damascus2000.minecraftsurvivalteamsplugin.EventHandlers.*;
 import me.damascus2000.minecraftsurvivalteamsplugin.Commands.*;
+import me.damascus2000.minecraftsurvivalteamsplugin.EventHandlers.*;
 import me.damascus2000.minecraftsurvivalteamsplugin.Sign.Signs;
 import me.damascus2000.minecraftsurvivalteamsplugin.YmlHandlers.PlayerYmlHandler;
 import me.damascus2000.minecraftsurvivalteamsplugin.YmlHandlers.TeamsYmlHandler;
@@ -12,8 +12,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scoreboard.Scoreboard;
-
 
 
 public final class Main extends JavaPlugin {
@@ -24,7 +22,8 @@ public final class Main extends JavaPlugin {
 
 
     @Override
-    public void onEnable() {
+    public void onEnable(){
+
         // Plugin startup logic
         //getCommand("tpbow").setExecutor(new TeleportBowCommands(this));
         playerYmlHandler = new PlayerYmlHandler(this);
@@ -52,8 +51,8 @@ public final class Main extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+    public void onDisable(){
+        //Plugin shutdown logic
         for (Player player : getServer().getOnlinePlayers()){
             afkHandler.removePlayer(player);
         }
@@ -62,9 +61,10 @@ public final class Main extends JavaPlugin {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
         return false;
     }
+
     public PlayerYmlHandler getPlayerHandler(){
         return playerYmlHandler;
     }
@@ -73,5 +73,5 @@ public final class Main extends JavaPlugin {
         return teamsYmlHandler;
     }
 
-    public AFKHandler getAfkHandler() {return afkHandler;}
+    public AFKHandler getAfkHandler(){return afkHandler;}
 }

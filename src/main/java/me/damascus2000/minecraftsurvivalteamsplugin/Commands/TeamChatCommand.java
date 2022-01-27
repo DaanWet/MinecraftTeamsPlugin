@@ -11,33 +11,38 @@ import org.bukkit.entity.Player;
 
 public class TeamChatCommand implements CommandExecutor {
 
-    private Main plugin;
+    private final Main plugin;
 
     public TeamChatCommand(Main plugin){
         this.plugin = plugin;
     }
+
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
         TeamsYmlHandler tHandler = plugin.getTeamsHandler();
         PlayerYmlHandler pHandler = plugin.getPlayerHandler();
-        if (sender instanceof Player) {
-                Player player = (Player) sender;
-                if (args.length == 0) {
-                    if (tHandler.getTeam(player.getName()) != null){
-                        if (pHandler.checkTeamChat(player.getName()).equalsIgnoreCase("false")) {
-                            pHandler.setTeamChat(player.getName(), true);
-                            player.sendMessage(ChatColor.GREEN + "You have enabled teamchat");
-                        } else {
-                            pHandler.setTeamChat(player.getName(), false);
-                            player.sendMessage(ChatColor.GREEN + "You have disabled teamchat");
-                        }
-                    } else {
-                        player.sendMessage(ChatColor.DARK_RED + "You have to be part of a team to perform this command");
-                    }
-                }
-            } else{
-                sender.sendMessage(ChatColor.DARK_RED + "You have to be a player to perform this command");
+        if (!(sender instanceof Player)){
+            sender.sendMessage(ChatColor.DARK_RED + "You have to be a player to perform this command");
+            return false;
+        }
+
+        Player player = (Player) sender;
+        if (args.length == 0){
+            if (tHandler.getTeam(player.getUniqueId()) == null){
+                player.sendMessage(ChatColor.DARK_RED + "You have to be part of a team to perform this command");
+                return false;
             }
+
+            if (!pHandler.checkTeamChat(player.getUniqueId())){
+                pHandler.setTeamChat(player.getUniqueId(), true);
+                player.sendMessage(ChatColor.GREEN + "You have enabled teamchat");
+            } else {
+                pHandler.setTeamChat(player.getUniqueId(), false);
+                player.sendMessage(ChatColor.GREEN + "You have disabled teamchat");
+            }
+
+        }
+
         return false;
     }
 }

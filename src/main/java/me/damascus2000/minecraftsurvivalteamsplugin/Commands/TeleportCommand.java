@@ -10,17 +10,17 @@ import org.bukkit.entity.Player;
 
 public class TeleportCommand implements CommandExecutor {
 
-    private Main plugin;
+    private final Main plugin;
 
-    public TeleportCommand(Main plugin) {
+    public TeleportCommand(Main plugin){
         this.plugin = plugin;
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args.length == 0) {
-            if (plugin.getConfig().getBoolean("travel")) {
-                if (sender instanceof Player) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
+        if (args.length == 0){
+            if (plugin.getConfig().getBoolean("travel")){
+                if (sender instanceof Player){
                     new GUIBuilder((Player) sender, plugin).createMainMenu();
                 } else {
                     sender.sendMessage("Only players can use this command");
@@ -29,21 +29,21 @@ public class TeleportCommand implements CommandExecutor {
                 sender.sendMessage("Travel is not enabled");
             }
         } else if (args.length == 1 && args[0].equalsIgnoreCase("editcost")){
-          sender.sendMessage(ChatColor.GREEN + "Cost: " + plugin.getConfig().getDouble("travelcost"));
-        } else if (args.length == 2 && args[0].equalsIgnoreCase("editcost")) {
+            sender.sendMessage(ChatColor.GREEN + "Cost: " + plugin.getConfig().getDouble("travelcost"));
+        } else if (args.length == 2 && args[0].equalsIgnoreCase("editcost")){
             boolean valid = true;
             if (sender instanceof Player){
                 Player player = (Player) sender;
                 valid = player.isOp();
             }
-            if (valid) {
+            if (valid){
                 double cost;
                 try {
                     cost = Double.parseDouble(args[1]);
-                } catch (Exception exc) {
+                } catch (Exception exc){
                     cost = -1;
                 }
-                if (cost > 0) {
+                if (cost > 0){
                     plugin.getConfig().set("travelcost", cost);
                     plugin.saveConfig();
                     sender.sendMessage(ChatColor.GREEN + "Succesfully set the travelcost to " + cost);
@@ -51,7 +51,7 @@ public class TeleportCommand implements CommandExecutor {
                     sender.sendMessage(ChatColor.RED + "Invalid Cost");
                 }
             }
-        } else if (args.length == 1 && args[0].equalsIgnoreCase("enable")) {
+        } else if (args.length == 1 && args[0].equalsIgnoreCase("enable")){
             plugin.getConfig().set("travel", true);
             plugin.saveConfig();
         } else if (args.length == 1 && args[0].equalsIgnoreCase("disable")){
@@ -59,5 +59,5 @@ public class TeleportCommand implements CommandExecutor {
             plugin.saveConfig();
         }
         return true;
-}
+    }
 }

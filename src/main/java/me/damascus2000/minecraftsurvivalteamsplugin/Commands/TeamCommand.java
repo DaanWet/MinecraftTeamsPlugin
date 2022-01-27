@@ -2,21 +2,21 @@ package me.damascus2000.minecraftsurvivalteamsplugin.Commands;
 
 import me.damascus2000.minecraftsurvivalteamsplugin.Commands.TeamSubCommand.*;
 import me.damascus2000.minecraftsurvivalteamsplugin.Main;
+import me.damascus2000.minecraftsurvivalteamsplugin.utils.MessageException;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class TeamCommand implements CommandExecutor {
 
-    private Main plugin;
-    private Map<String, TeamSubCommand> subCommands;
+    private final Main plugin;
+    private final Map<String, TeamSubCommand> subCommands;
 
-    public TeamCommand(Main plugin) {
+    public TeamCommand(Main plugin){
         this.plugin = plugin;
         subCommands = new HashMap<String, TeamSubCommand>() {
             {
@@ -36,9 +36,9 @@ public class TeamCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
         // /teams or /teams help
-        if (args.length == 0 || args[0].equalsIgnoreCase("help")) {
+        if (args.length == 0 || args[0].equalsIgnoreCase("help")){
             sender.sendMessage("-------" + ChatColor.AQUA + "Teams Help" + ChatColor.RESET + "-------");
             sender.sendMessage(ChatColor.AQUA + "/teams help: " + ChatColor.RESET + "Shows this help page.");
             sender.sendMessage(ChatColor.AQUA + "/teams create <teamname> <color>: " + ChatColor.RESET + "Creates (and joins) a team");
@@ -52,9 +52,13 @@ public class TeamCommand implements CommandExecutor {
             sender.sendMessage(ChatColor.AQUA + "/teams changeFX <effect>: " + ChatColor.RESET + "Changes the displayed effect of your teamname");
             sender.sendMessage(ChatColor.AQUA + "/teams list: " + ChatColor.RESET + "Gives a list of all the teams on the server");
             sender.sendMessage("-------" + ChatColor.AQUA + "Teams Help" + ChatColor.AQUA + "-------");
-        }
-        else if (subCommands.containsKey(args[0].toLowerCase())) {
-            subCommands.get(args[0].toLowerCase()).doCommand(sender, args);
+        } else if (subCommands.containsKey(args[0].toLowerCase())){
+            try {
+                subCommands.get(args[0].toLowerCase()).doCommand(sender, args);
+            } catch (MessageException exc){
+                sender.sendMessage(ChatColor.DARK_RED + exc.getMessage());
+            }
+
         }
         //al other
         else {

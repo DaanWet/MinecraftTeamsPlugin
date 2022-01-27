@@ -2,31 +2,20 @@ package me.damascus2000.minecraftsurvivalteamsplugin.EventHandlers;
 
 import me.damascus2000.minecraftsurvivalteamsplugin.Main;
 import me.damascus2000.minecraftsurvivalteamsplugin.YmlHandlers.TeamsYmlHandler;
-import net.minecraft.server.v1_16_R2.Entity;
-import net.minecraft.server.v1_16_R2.NBTTagCompound;
-import net.minecraft.server.v1_16_R2.NBTTagList;
-import org.bukkit.craftbukkit.v1_16_R2.entity.CraftVillager;
-import org.bukkit.entity.Villager;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryOpenEvent;
-import org.bukkit.inventory.*;
-
-import java.util.HashMap;
-import java.util.UUID;
 
 public class VillagerTrade implements Listener {
 
 
-    private Main plugin;
-    private TeamsYmlHandler handler;
+    private final Main plugin;
+    private final TeamsYmlHandler handler;
 
     public VillagerTrade(Main plugin){
         this.handler = plugin.getTeamsHandler();
         this.plugin = plugin;
     }
 
-    @EventHandler
+    /*@EventHandler
     public void onTrade(InventoryOpenEvent e) {
         if (e.getInventory() instanceof MerchantInventory) {
             String team = handler.getTeam(e.getPlayer().getName());
@@ -79,5 +68,5 @@ public class VillagerTrade implements Listener {
 
             }
         }
-    }
+    }*/
 }

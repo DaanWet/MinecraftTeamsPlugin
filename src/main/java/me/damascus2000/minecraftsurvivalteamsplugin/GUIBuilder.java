@@ -5,7 +5,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -14,15 +13,14 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 public class GUIBuilder {
 
-    private TeamsYmlHandler tHandler;
-    private Player player;
     ItemStack back = new ItemStack(Material.BARRIER);
+    private final TeamsYmlHandler tHandler;
+    private final Player player;
     private Location loc;
-    private Main plugin;
+    private final Main plugin;
 
 
     public GUIBuilder(Player player, Main plugin){
@@ -50,12 +48,12 @@ public class GUIBuilder {
         return inv;
     }
 
-    public void createMainMenu() {
+    public void createMainMenu(){
         Inventory inv = createBasicInv(player, 9, ChatColor.AQUA + "Main Menu");
         ItemStack createw;
         ItemMeta createMeta;
         ArrayList<String> createLore;
-        if (tHandler.getTeam(player.getName()) != null) {
+        if (tHandler.getTeam(player.getName()) != null){
             createw = new ItemStack(Material.CRAFTING_TABLE);
             createMeta = createw.getItemMeta();
             createMeta.setDisplayName(ChatColor.GREEN + "Create Travel Point");
@@ -131,19 +129,19 @@ public class GUIBuilder {
             }
         }
 
-        int grootte = (((teamsWithWarp.size() + 1)/ 2) * 18) + 9;
-        Inventory inv = createBasicInv(player, grootte , ChatColor.AQUA + "Travel Menu");
+        int grootte = (((teamsWithWarp.size() + 1) / 2) * 18) + 9;
+        Inventory inv = createBasicInv(player, grootte, ChatColor.AQUA + "Travel Menu");
         int place = 11;
         int team = 0;
         while (team < teamsWithWarp.size()){
             int j = 0;
-            while (team + j < teamsWithWarp.size() &&  j < 2) {
+            while (team + j < teamsWithWarp.size() && j < 2){
                 String teamname = teamsWithWarp.get(team + j);
                 String color = tHandler.getTeamColor(teamname).toUpperCase();
                 ItemStack block;
                 try {
                     block = new ItemStack(Material.valueOf(String.format("%s_CONCRETE", color)));
-                } catch (Exception e) {
+                } catch (Exception e){
                     block = new ItemStack(Material.WHITE_CONCRETE);
                 }
                 ItemMeta blockMeta = block.getItemMeta();
@@ -172,11 +170,11 @@ public class GUIBuilder {
         double x = vector.getX();
         double y = vector.getY();
         double z = vector.getZ();
-        double flatdistance = Math.sqrt(x*x + y*y);
-        double distance = Math.sqrt(flatdistance*flatdistance + z*z);
-        int cost = (int)(plugin.getConfig().getDouble("travelcost") * distance);
-        for(int i = 0; i< 27; i++){
-            if (i != 13) {
+        double flatdistance = Math.sqrt(x * x + y * y);
+        double distance = Math.sqrt(flatdistance * flatdistance + z * z);
+        int cost = (int) (plugin.getConfig().getDouble("travelcost") * distance);
+        for (int i = 0; i < 27; i++){
+            if (i != 13){
                 ItemStack black = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
                 ItemMeta blackMeta = black.getItemMeta();
                 blackMeta.setDisplayName(ChatColor.GRAY + String.format("Deposit %s coal", cost));
