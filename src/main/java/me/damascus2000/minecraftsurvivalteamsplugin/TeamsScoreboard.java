@@ -31,7 +31,7 @@ public class TeamsScoreboard implements Listener {
             for (UUID player : tHandler.getTeamMembers(teamname)){
                 Objective obj = board.getObjective("ts_Deaths");
                 if (obj != null){
-                    deaths += obj.getScore(player.toString()).getScore();
+                    deaths += obj.getScore(player.toString()).getScore(); // TODO: Check if this works in game
                 }
 
             }

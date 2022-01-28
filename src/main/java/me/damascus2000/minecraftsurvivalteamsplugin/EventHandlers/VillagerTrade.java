@@ -1,72 +1,67 @@
 package me.damascus2000.minecraftsurvivalteamsplugin.EventHandlers;
 
+
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import me.damascus2000.minecraftsurvivalteamsplugin.Main;
 import me.damascus2000.minecraftsurvivalteamsplugin.YmlHandlers.TeamsYmlHandler;
+import net.minecraft.world.entity.ai.gossip.GossipContainer;
+import net.minecraft.world.entity.ai.gossip.GossipType;
+import net.minecraft.world.entity.npc.Villager;
+import org.bukkit.craftbukkit.v1_18_R1.entity.CraftVillager;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.inventory.MerchantInventory;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 
 public class VillagerTrade implements Listener {
 
 
     private final Main plugin;
     private final TeamsYmlHandler handler;
+    private final HashMap<UUID, Integer> values;
 
     public VillagerTrade(Main plugin){
         this.handler = plugin.getTeamsHandler();
         this.plugin = plugin;
+        values = new HashMap<>();
     }
 
-    /*@EventHandler
-    public void onTrade(InventoryOpenEvent e) {
-        if (e.getInventory() instanceof MerchantInventory) {
-            String team = handler.getTeam(e.getPlayer().getName());
+    @EventHandler
+    public void onTrade(PlayerInteractEntityEvent e){
+        if (e.getRightClicked() instanceof CraftVillager) {
+            UUID player = e.getPlayer().getUniqueId();
+            String team = handler.getTeam(player);
             if (team != null) {
-                MerchantInventory inv = (MerchantInventory) e.getInventory();
-                Villager v = (Villager) inv.getHolder();
-                Entity villager = ((CraftVillager) inv.getHolder()).getHandle();
-                NBTTagCompound tag = villager.save(new NBTTagCompound());
-                NBTTagList gossips = (NBTTagList) tag.get("Gossips");
-                HashMap<UUID, Integer> majorPositiveS = new HashMap<>();
-                for (int i = 0; i < gossips.size(); i++) {
-                    NBTTagCompound gossip = gossips.getCompound(i);
-                    if (gossip.getString("Type").equals("major_positive")) {
-                        int[] uuid = gossip.getIntArray("Target");
-                        long most = (long)uuid[0] << 32 | uuid[1] & 0xFFFFFFFFL;
-                        long least = (long)uuid[2] << 32 | uuid[3] & 0xFFFFFFFFL;
-                        majorPositiveS.put(new UUID(most, least), gossip.getInt("Value"));
+                Villager villager = ((CraftVillager) e.getRightClicked()).getHandle();
+                GossipContainer g = villager.getGossips();
+                Map<UUID, Object2IntMap<GossipType>> gossip = g.getGossipEntries();
+                int newvalue = 0;
+                for (UUID member : handler.getTeamMembers(team)){
+                    if (!member.equals(player) && gossip.getOrDefault(member, new Object2IntOpenHashMap<>()).containsKey(GossipType.MAJOR_POSITIVE)){
+                        newvalue += gossip.get(member).getInt(GossipType.MAJOR_POSITIVE);
                     }
                 }
-                int value = 0;
-                UUID playerUUID = e.getPlayer().getUniqueId();
-                for (UUID uid : majorPositiveS.keySet()) {
-                    if (handler.getTeam(plugin.getServer().getOfflinePlayer(uid).getName()).equals(team)) {
-                        value = Math.max(value, majorPositiveS.get(uid));
-                    }
-                }
-                if (majorPositiveS.containsKey(playerUUID)) {
-                    for (int i = 0; i < gossips.size(); i++) {
-                        NBTTagCompound gossip = gossips.getCompound(i);
-                        int[] uuid = gossip.getIntArray("Target");
-                        long most = (long)uuid[0] << 32 | uuid[1] & 0xFFFFFFFFL;
-                        long least = (long)uuid[2] << 32 | uuid[3] & 0xFFFFFFFFL;
-                        if (gossip.getString("Type").equals("major_positive") && new UUID(most, least).equals(playerUUID)) {
-                            gossip.setInt("Value", value);
-                        }
-                    }
-                } else {
-                    NBTTagCompound majorPositive = new NBTTagCompound();
-                    majorPositive.setString("Type", "major_positive");
-                    majorPositive.setInt("Value", value);
-                    int[] array = new int[4];
-                    array[0] = (int) (playerUUID.getMostSignificantBits() >> 32);
-                    array[1] = (int) (playerUUID.getMostSignificantBits());
-                    array[2] = (int) (playerUUID.getLeastSignificantBits() >> 32);
-                    array[3] = (int) (playerUUID.getLeastSignificantBits());
-                    majorPositive.setIntArray("Target", array);
-                    gossips.add(majorPositive);
-                }
-                villager.load(tag);
-
+                values.put(player, newvalue);
+                g.add(player, GossipType.MAJOR_POSITIVE, newvalue);
             }
         }
-    }*/
+    }
+
+    @EventHandler
+    public void closeTrade(InventoryCloseEvent e){
+        UUID player = e.getPlayer().getUniqueId();
+        if (e.getInventory() instanceof MerchantInventory && values.containsKey(player)) {
+            Villager villager = ((CraftVillager) e.getInventory().getHolder()).getHandle();
+            GossipContainer g = villager.getGossips();
+            Map<UUID, Object2IntMap<GossipType>> gossip = g.getGossipEntries();
+            g.add(player, GossipType.MAJOR_POSITIVE, -1 * values.get(player));
+        }
+    }
 }
