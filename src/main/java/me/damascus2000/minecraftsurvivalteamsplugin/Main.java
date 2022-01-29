@@ -47,6 +47,7 @@ public final class Main extends JavaPlugin {
         plm.registerEvents(new Sleep(this), this);
         plm.registerEvents(new TeamsScoreboard(this), this);
         plm.registerEvents(new VillagerTrade(this), this);
+        plm.registerEvents(new AnimalHandler(this), this);
         //getServer().getPluginManager().registerEvents(new TeleportBowEvent(this), this);
     }
 
