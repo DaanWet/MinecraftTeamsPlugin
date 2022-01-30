@@ -3,7 +3,10 @@ package me.damascus2000.minecraftsurvivalteamsplugin.Sign;
 import me.damascus2000.minecraftsurvivalteamsplugin.EventHandlers.ChatPrefix;
 import me.damascus2000.minecraftsurvivalteamsplugin.Main;
 import me.damascus2000.minecraftsurvivalteamsplugin.YmlHandlers.TeamsYmlHandler;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockState;
 import org.bukkit.block.Sign;
 import org.bukkit.conversations.Conversation;
 import org.bukkit.conversations.ConversationFactory;
@@ -50,22 +53,26 @@ public class Signs implements Listener {
     public void afterConversation(PlayerInteractEvent e){
         Sign sign = (Sign) e.getClickedBlock().getState();
         String name = e.getPlayer().getName();
-        //String world = e.getClickedBlock().getWorld().getName();
+        String world = e.getClickedBlock().getWorld().getName();
         String team = tHandler.getTeam(e.getPlayer().getUniqueId());
         sign.setLine(0, ChatColor.valueOf(tHandler.getTeamColor(team)) + team);
         sign.setLine(1, name);
         sign.setLine(2, ChatColor.AQUA + "Join");
         sign.update(true);
         new ChatPrefix(plugin).nameChange(e.getPlayer());
-        /*int xco = (int) e.getClickedBlock().getLocation().getX();
+        int xco = (int) e.getClickedBlock().getLocation().getX();
         int yco = (int) e.getClickedBlock().getLocation().getY();
         int zco = (int) e.getClickedBlock().getLocation().getZ();
         org.bukkit.material.Sign signdata = (org.bukkit.material.Sign) sign.getData();
+        signdata.getFacing();
+        BlockState state = sign.getBlock().getState();
+        signdata.getAttachedFace();
+        signdata.getFacing().getOppositeFace();
         String facing = signdata.getFacing().name();
         if (facing.equalsIgnoreCase("EAST")){
             Block blunder = Bukkit.getServer().getWorld(world).getBlockAt(xco, (yco--), zco);
             Block blright = Bukkit.getServer().getWorld(world).getBlockAt(xco, yco, (zco--));
-            Block blrightunder = Bukkit.getServer().getWorld(world).getBlockAt(xco, (yco--),(zco--));
+            Block blrightunder = Bukkit.getServer().getWorld(world).getBlockAt(xco, (yco--), (zco--));
             //if (blunder.getType() != AIR && blright.getType() != AIR && blrightunder.getType() != AIR) {
             sign.setLine(0, ChatColor.AQUA + "Team");
             sign.update();
@@ -73,11 +80,11 @@ public class Signs implements Listener {
             //sign.setLine(2, ChatColor.valueOf(Main.getTeamColor(Main.getTeam(temp))) + Main.getTeam(temp));
             //makeJoinBlocks(blunder,blright,blrightunder, e.getPlayer().getDisplayName(), "EAST");
             //} else e.getPlayer().sendMessage(ChatColor.DARK_RED + "You need to have free blocks, right, under & rightunder your sign");
-        }else if (facing.equalsIgnoreCase("north")) {
+        } else if (facing.equalsIgnoreCase("north")){
             e.getPlayer().sendMessage("nope");
-        }else if (facing.equalsIgnoreCase("south")){
+        } else if (facing.equalsIgnoreCase("south")){
             e.getPlayer().sendMessage("nope");
-        }else if (facing.equalsIgnoreCase("west")){
+        } else if (facing.equalsIgnoreCase("west")){
             e.getPlayer().sendMessage("nope");
         } else e.getPlayer().sendMessage("You have to place the sign on the side of a block");
         //Bukkit.getServer().getWorld(world).getBlockAt();*/

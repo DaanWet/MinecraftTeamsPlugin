@@ -9,11 +9,11 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 
 public class AnimalHandler implements Listener {
 
-    private TeamsYmlHandler tHandler;
+    private final TeamsYmlHandler tHandler;
 
     public AnimalHandler(Main plugin){
         tHandler = plugin.getTeamsHandler();
-    };
+    }
 
 
     @EventHandler

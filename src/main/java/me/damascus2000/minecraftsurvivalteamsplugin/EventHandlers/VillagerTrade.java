@@ -35,10 +35,10 @@ public class VillagerTrade implements Listener {
 
     @EventHandler
     public void onTrade(PlayerInteractEntityEvent e){
-        if (e.getRightClicked() instanceof CraftVillager) {
+        if (e.getRightClicked() instanceof CraftVillager){
             UUID player = e.getPlayer().getUniqueId();
             String team = handler.getTeam(player);
-            if (team != null) {
+            if (team != null){
                 Villager villager = ((CraftVillager) e.getRightClicked()).getHandle();
                 GossipContainer g = villager.getGossips();
                 Map<UUID, Object2IntMap<GossipType>> gossip = g.getGossipEntries();
@@ -57,7 +57,7 @@ public class VillagerTrade implements Listener {
     @EventHandler
     public void closeTrade(InventoryCloseEvent e){
         UUID player = e.getPlayer().getUniqueId();
-        if (e.getInventory() instanceof MerchantInventory && values.containsKey(player)) {
+        if (e.getInventory() instanceof MerchantInventory && values.containsKey(player)){
             Villager villager = ((CraftVillager) e.getInventory().getHolder()).getHandle();
             GossipContainer g = villager.getGossips();
             Map<UUID, Object2IntMap<GossipType>> gossip = g.getGossipEntries();

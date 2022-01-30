@@ -30,7 +30,7 @@ public class PlayerYmlHandler extends YmlHandler {
             config.set(p + ".AFK", false);
             saveYml();
         }
-        return (boolean) config.getBoolean(p + ".AFK");
+        return config.getBoolean(p + ".AFK");
     }
 
     public void setAFK(UUID player, boolean afk){

@@ -1,7 +1,8 @@
 package me.damascus2000.minecraftsurvivalteamsplugin.Commands;
 
-import me.damascus2000.minecraftsurvivalteamsplugin.GUIBuilder;
 import me.damascus2000.minecraftsurvivalteamsplugin.Main;
+import me.damascus2000.minecraftsurvivalteamsplugin.gui.MenuData;
+import me.damascus2000.minecraftsurvivalteamsplugin.gui.menus.TravelMainMenu;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -21,7 +22,7 @@ public class TeleportCommand implements CommandExecutor {
         if (args.length == 0){
             if (plugin.getConfig().getBoolean("travel")){
                 if (sender instanceof Player){
-                    new GUIBuilder((Player) sender, plugin).createMainMenu();
+                    new TravelMainMenu(plugin, new MenuData((Player) sender));
                 } else {
                     sender.sendMessage("Only players can use this command");
                 }

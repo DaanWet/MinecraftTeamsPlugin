@@ -8,9 +8,9 @@ import java.io.IOException;
 
 public abstract class YmlHandler {
 
+    private final Main plugin;
     protected YamlConfiguration config;
     protected File ymlFile;
-    private final Main plugin;
 
     public YmlHandler(Main plugin){
         this.plugin = plugin;
