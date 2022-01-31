@@ -14,19 +14,33 @@ public class FuelMenu extends Menu {
 
     public FuelMenu(Main plugin, MenuData menuData){
         super(plugin, menuData);
+        this.fill = false;
+        this.name = ChatColor.BLACK + "Fuel Deposit";
     }
 
     @Override
     public void handleMenu(InventoryClickEvent e){
+        boolean top = e.getClickedInventory().equals(e.getView().getTopInventory());
         switch (e.getCurrentItem().getType()){
             case GREEN_CONCRETE -> {
-                ItemStack fuel = e.getClickedInventory().getItem(13);
-                if (fuel.getType() == Material.COAL && fuel.getAmount() == menuData.getCost()){
-                    menuData.getOwner().teleport(menuData.getWarp());
+                if (top){
+                    ItemStack fuel = e.getClickedInventory().getItem(13);
+                    if (fuel.getType() == Material.COAL && fuel.getAmount() == menuData.getCost()){
+                        menuData.getOwner().teleport(menuData.getWarp());
+                    }
                 }
+
             }
             case COAL -> e.setCancelled(false);
+            case AIR -> {
+                if (e.getCurrentItem().getType() == Material.COAL){
+                    e.setCancelled(false);
+                }
+            }
             case BARRIER -> new TravelMenu(plugin, menuData).open();
+        }
+        if (!top){
+            e.setCancelled(false);
         }
     }
 
@@ -50,6 +64,7 @@ public class FuelMenu extends Menu {
         }
         String desc = ChatColor.GRAY + String.format("%s coal", cost);
         String team = tHandler.getTeam(menuData.getOwner().getUniqueId());
+        inventory.setItem(13, new ItemStack(Material.AIR));
         inventory.setItem(25, makeItem(Material.GREEN_CONCRETE, ChatColor.GREEN + "Confirm", desc, team));
         inventory.setItem(26, BACK);
         inventory.setMaxStackSize(cost);

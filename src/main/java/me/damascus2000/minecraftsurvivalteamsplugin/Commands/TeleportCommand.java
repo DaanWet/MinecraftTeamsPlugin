@@ -22,7 +22,7 @@ public class TeleportCommand implements CommandExecutor {
         if (args.length == 0){
             if (plugin.getConfig().getBoolean("travel")){
                 if (sender instanceof Player){
-                    new TravelMainMenu(plugin, new MenuData((Player) sender));
+                    new TravelMainMenu(plugin, new MenuData((Player) sender)).open();
                 } else {
                     sender.sendMessage("Only players can use this command");
                 }
