@@ -7,6 +7,8 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -135,8 +137,55 @@ public class TeamsYmlHandler extends YmlHandler {
     }
 
     public ItemStack[] getEnderChest(String team){
-        return (ItemStack[]) config.get(team + ".EnderChest");
+        try {
+            ItemStack[] list = (ItemStack[]) config.get(team + ".EnderChest");
+            System.out.println("array");
+            return list;
+        } catch(ClassCastException e){
+            System.out.println("list");
+            List<ItemStack> list = (List<ItemStack>) config.getList(team + ".EnderChest");
+            if (list == null){
+                return null;
+            }
+            ItemStack[] chest = new ItemStack[list.size()];
+            list.toArray(chest);
+            return chest;
+        }
     }
 
+    public boolean isLocked(Location location, String team){
+        for (String teamName : config.getKeys(false)){
+            if (!teamName.equals(team)){
+                List<Location> locks = (List<Location>) config.getList(teamName + ".Chests");
+                if (locks.contains(location)){
+                    return true;
+                }
+            } else {
+                List<Location> locks = (List<Location>) config.getList(teamName + ".Chests");
+                if (locks.contains(location)){
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void setLocked(Location location, String team){
+        ArrayList<Location> locks = (ArrayList<Location>) config.getList(team + ".Chests");
+        if (locks == null){
+            locks = new ArrayList<>();
+        }
+        locks.add(location);
+        config.set(team + ".Chests", locks);
+    }
+
+    public void removeLocked(Location location, String team){
+        ArrayList<Location> locks = (ArrayList<Location>) config.getList(team + ".Chests");
+        if (locks == null){
+            locks = new ArrayList<>();
+        }
+        locks.remove(location);
+        config.set(team + ".Chests", locks);
+    }
 
 }

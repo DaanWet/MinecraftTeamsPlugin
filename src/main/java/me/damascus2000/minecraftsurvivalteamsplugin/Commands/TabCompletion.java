@@ -22,7 +22,7 @@ public class TabCompletion implements TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args){
-        List<String> s1 = Arrays.asList("help", "create", "join", "leave", "info", "kick", "remove", "rename", "changecolor", "list", "changeFX");
+        List<String> s1 = Arrays.asList("help", "create", "join", "leave", "info", "kick", "remove", "rename", "changecolor", "list", "changeFX", "lock");
         List<String> teams = plugin.getTeamsHandler().getTeams();
         List<String> colors = Arrays.asList("Aqua", "Green", "Red", "Black", "Blue", "Gray", "Gold", "Yellow", "Dark_Aqua", "Dark_Blue", "Dark_gray", "Dark_Green", "Dark_Purple", "Light_Purple");
         List<String> effects = Arrays.asList("Magic", "Bold", "Italic", "Strikethrough", "Underline");
