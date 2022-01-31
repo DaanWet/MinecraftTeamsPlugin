@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import me.damascus2000.minecraftsurvivalteamsplugin.Main;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
 import java.util.Collections;
@@ -12,7 +13,6 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class TeamsYmlHandler extends YmlHandler {
-
 
     public TeamsYmlHandler(Main plugin){
         super(plugin);
@@ -128,20 +128,15 @@ public class TeamsYmlHandler extends YmlHandler {
         saveYml();
     }
 
-    public void setVillager(String team, UUID uuid, int value){
-        String u = uuid.toString();
-        if (!config.contains(team + ".Villagers." + u)){
-            config.createSection(team + ".Villagers." + u);
-        }
-        config.set(team + ".Villagers." + u, value);
+
+    public void setEnderChest(String team, ItemStack[] ender){
+        config.set(team + ".EnderChest", ender);
+        saveYml();
     }
 
-    public int getVillager(String team, UUID uuid){
-        String u = uuid.toString();
-        if (config.contains(team + ".Villagers." + u)){
-            return config.getInt(team + ".Villagers." + u);
-        } else {
-            return -1;
-        }
+    public ItemStack[] getEnderChest(String team){
+        return (ItemStack[]) config.get(team + ".EnderChest");
     }
+
+
 }

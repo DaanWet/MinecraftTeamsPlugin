@@ -8,6 +8,7 @@ public class MenuData {
     private final Player owner;
     private Location warp;
     private int cost;
+    private String team;
 
 
     public MenuData(Player p){
@@ -32,5 +33,13 @@ public class MenuData {
 
     public void setCost(int cost){
         this.cost = cost;
+    }
+
+    public String getTeam(){
+        return team;
+    }
+
+    public void setTeam(String team){
+        this.team = team;
     }
 }

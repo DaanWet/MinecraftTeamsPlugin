@@ -15,13 +15,14 @@ import java.util.Arrays;
 
 public abstract class Menu implements InventoryHolder {
 
+    protected final TeamsYmlHandler tHandler;
+    protected final Main plugin;
     protected MenuData menuData;
     protected Inventory inventory;
     protected ItemStack FILLER_GLASS = makeItem(Material.GRAY_STAINED_GLASS_PANE, " ");
     protected ItemStack BACK = makeItem(Material.BARRIER, ChatColor.RED + "Back");
     protected String name;
-    protected TeamsYmlHandler tHandler;
-    protected Main plugin;
+    protected boolean fill = true;
 
     public Menu(Main plugin, MenuData menuData){
         this.menuData = menuData;
@@ -32,6 +33,9 @@ public abstract class Menu implements InventoryHolder {
 
     public abstract void handleMenu(InventoryClickEvent e);
 
+    public void handleClose(){}
+
+
     public abstract void setMenuItems();
 
     public abstract int getSize();
@@ -39,6 +43,8 @@ public abstract class Menu implements InventoryHolder {
     public void open(){
         inventory = Bukkit.createInventory(this, getSize(), name);
         this.setMenuItems();
+        if (fill)
+            this.setFillerGlass();
         menuData.getOwner().openInventory(inventory);
     }
 

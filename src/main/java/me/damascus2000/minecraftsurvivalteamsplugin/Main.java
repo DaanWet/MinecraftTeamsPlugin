@@ -13,13 +13,15 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.HashMap;
+
 
 public final class Main extends JavaPlugin {
 
     private PlayerYmlHandler playerYmlHandler;
     private TeamsYmlHandler teamsYmlHandler;
     private AFKHandler afkHandler;
-
+    private HashMap<String, Player> enderOpen;
 
     @Override
     public void onEnable(){
@@ -28,6 +30,7 @@ public final class Main extends JavaPlugin {
         //getCommand("tpbow").setExecutor(new TeleportBowCommands(this));
         playerYmlHandler = new PlayerYmlHandler(this);
         teamsYmlHandler = new TeamsYmlHandler(this);
+        enderOpen = new HashMap<>();
         afkHandler = new AFKHandler(this);
         for (Player p : Bukkit.getOnlinePlayers()){
             afkHandler.addPlayer(p);
@@ -48,6 +51,7 @@ public final class Main extends JavaPlugin {
         plm.registerEvents(new TeamsScoreboard(this), this);
         plm.registerEvents(new VillagerTrade(this), this);
         plm.registerEvents(new AnimalHandler(this), this);
+        plm.registerEvents(new EnderChestHandler(this), this);
         //getServer().getPluginManager().registerEvents(new TeleportBowEvent(this), this);
     }
 
@@ -75,4 +79,17 @@ public final class Main extends JavaPlugin {
     }
 
     public AFKHandler getAfkHandler(){return afkHandler;}
+
+    public Player isEnderOpen(String teamname){
+        return enderOpen.getOrDefault(teamname, null);
+    }
+
+    public void setEnderOpen(String teamname, Player player){
+        enderOpen.put(teamname, player);
+    }
+
+    public void closeEnder(String team){
+        enderOpen.remove(team);
+    }
+
 }
